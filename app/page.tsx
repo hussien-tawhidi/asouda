@@ -1,3 +1,4 @@
+import FeaturesSection from "@/components/Features";
 import { HeroCollage } from "@/components/hero/Hero";
 export default function Home() {
   const images = [
@@ -19,6 +20,7 @@ export default function Home() {
         ctaLink='/products'
         className='min-h-screen'
       />
+      <FeaturesSection/>
     </div>
   );
 }

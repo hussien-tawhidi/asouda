@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className='min-h-full flex flex-col'>
         <main>
           <Header />
-          <section>
+          <section className="mb-16">
             {children}
           </section>
         </main>

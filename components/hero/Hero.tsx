@@ -3,8 +3,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Star } from "lucide-react";
 import Link from "next/link";
+import { BiStar } from "react-icons/bi";
+import { BsArrowRight } from "react-icons/bs";
 
 // تابع ساده برای کلاس‌های شرطی
 function cn(...classes: (string | undefined | false)[]) {
@@ -99,7 +100,7 @@ const HeroCollage = React.forwardRef<HTMLDivElement, HeroCollageProps>(
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className='inline-flex items-center gap-2 px-4 py-1.5 bg-earth-brown/10 rounded-full text-sm font-medium'>
-              <Star className='w-4 h-4 fill-earth-brown' />
+              <BiStar className='w-4 h-4 fill-earth-brown' />
               <span>تولیدکننده‌ی برتر سرویس خواب</span>
             </motion.div>
 
@@ -130,7 +131,7 @@ const HeroCollage = React.forwardRef<HTMLDivElement, HeroCollageProps>(
                 href={ctaLink}
                 className='inline-flex items-center gap-3 md:px-8 px-4 md:py-4 py-2 md:text-md text-sm bg-earth-brown text-bone-white rounded-full hover:bg-earth-brown/90 hover:shadow-xl hover:shadow-earth-brown/20 transition-all duration-300 active:scale-95 font-medium'>
                 {ctaText}
-                <ArrowRight className='w-5 h-5' />
+                <BsArrowRight className='w-5 h-5' />
               </Link>
             </motion.div>
           </div>

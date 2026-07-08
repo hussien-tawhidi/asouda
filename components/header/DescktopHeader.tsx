@@ -23,9 +23,7 @@ export default function DesktopHeader() {
 
       {/* 🏷 LOGO */}
       <div className='flex justify-center items-center py-3'>
-        <Link
-          href='/'
-          className='text-2xl tracking-[0.3em] font-semibold text-[#5b4c3a]'>
+        <Link href='/'>
           <Image
             src={"/asouda-logo.png"}
             width={150}

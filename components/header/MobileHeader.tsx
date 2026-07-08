@@ -4,8 +4,9 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
-import { BiHome, BiPhone, BiSolidUser } from "react-icons/bi";
+import { BiHome, BiPhone, BiSolidUser, BiUser } from "react-icons/bi";
 import { BsInfo, BsInstagram, BsWhatsapp } from "react-icons/bs";
+import { PiHeartThin } from "react-icons/pi";
 
 export default function MobileHeader() {
   const pathname = usePathname(); // برای تشخیص صفحه‌ی فعال
@@ -22,6 +23,19 @@ export default function MobileHeader() {
     <header>
       {/* ===== هدر بالایی (ثابت) ===== */}
       <section className='fixed top-0 left-0 w-full z-50 bg-bone-white/80 backdrop-blur-md border-b border-earth-brown/20 shadow-sm'>
+        <div className='bg-espresso-clay text-bone-white text-xs px-5 py-1 flex justify-between'>
+          <span>
+            خوش آمدید |{" "}
+            <Link href='/login' className='underline'>
+              ورود
+            </Link>
+          </span>
+
+          <div className='flex gap-4 text-[16px]'>
+            <Link href='/wishlist'><PiHeartThin/></Link>
+            <Link href='/account'><BiUser/></Link>
+          </div>
+        </div>
         <div className='flex items-center justify-between px-6'>
           <div className='flex items-center p-2 gap-4'>
             {/* لوگو - با سایز مناسب */}

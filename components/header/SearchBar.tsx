@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
-
-import { Search, X, Clock, ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { BiSearch } from "react-icons/bi";
+import { BsArrowRight, BsClock } from "react-icons/bs";
+import { CgClose } from "react-icons/cg";
 
 // نمونه داده برای پیشنهادات و نتایج
 const POPULAR_SUGGESTIONS = [
@@ -122,7 +123,7 @@ export default function SearchBar() {
         onClick={openSearch}
         className='p-2 rounded-full hover:bg-earth-brown/10 transition-colors duration-200'
         aria-label='جستجو'>
-        <Search className='w-5 h-5 text-earth-brown' />
+        <BiSearch className='w-5 h-5 text-earth-brown' />
       </button>
 
       {/* اورلی جستجو */}
@@ -139,12 +140,12 @@ export default function SearchBar() {
                 onClick={closeSearch}
                 className='p-2 -ml-2 rounded-full hover:bg-earth-brown/10 transition-colors'
                 aria-label='بستن جستجو'>
-                <X className='w-5 h-5 text-earth-brown' />
+                <CgClose className='w-5 h-5 text-earth-brown' />
               </button>
 
               {/* فیلد ورودی */}
               <div className='relative flex-1'>
-                <Search className='absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-earth-brown/40' />
+                <BiSearch className='absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-earth-brown/40' />
                 <input
                   ref={inputRef}
                   type='text'
@@ -164,7 +165,7 @@ export default function SearchBar() {
                     onClick={() => setQuery("")}
                     className='absolute left-3 top-1/2 -translate-y-1/2 p-0.5 rounded-full hover:bg-earth-brown/10 transition-colors'
                     aria-label='پاک کردن متن'>
-                    <X className='w-4 h-4 text-earth-brown/50' />
+                    <CgClose className='w-4 h-4 text-earth-brown/50' />
                   </button>
                 )}
               </div>
@@ -186,7 +187,7 @@ export default function SearchBar() {
                   {recentSearches.length > 0 && (
                     <div>
                       <h3 className='text-xs font-semibold text-earth-brown/50 uppercase tracking-wider mb-3 flex items-center gap-2'>
-                        <Clock className='w-3.5 h-3.5' />
+                        <BsClock className='w-3.5 h-3.5' />
                         جستجوهای اخیر
                       </h3>
                       <div className='flex flex-wrap gap-2'>
@@ -195,7 +196,7 @@ export default function SearchBar() {
                             key={item}
                             onClick={() => handleSearch(item)}
                             className='px-3 py-1.5 bg-earth-brown/5 hover:bg-earth-brown/10 rounded-full text-sm text-earth-brown transition-colors flex items-center gap-1.5'>
-                            <Clock className='w-3 h-3' />
+                            <BsClock className='w-3 h-3' />
                             {item}
                           </button>
                         ))}
@@ -215,7 +216,7 @@ export default function SearchBar() {
                           onClick={() => handleSearch(item)}
                           className='text-right px-3 py-2 bg-earth-brown/5 hover:bg-earth-brown/10 rounded-lg text-sm text-earth-brown transition-colors flex items-center justify-between group'>
                           <span>{item}</span>
-                          <ArrowRight className='w-3.5 h-3.5 text-earth-brown/30 group-hover:text-earth-brown/60 transition-colors' />
+                          <BsArrowRight className='w-3.5 h-3.5 text-earth-brown/30 group-hover:text-earth-brown/60 transition-colors' />
                         </button>
                       ))}
                     </div>
@@ -235,14 +236,14 @@ export default function SearchBar() {
                           onClick={() => handleSearch(item)}
                           className='w-full text-right px-3 py-2.5 hover:bg-earth-brown/5 rounded-lg transition-colors flex items-center justify-between group'>
                           <span className='text-earth-brown'>{item}</span>
-                          <ArrowRight className='w-4 h-4 text-earth-brown/20 group-hover:text-earth-brown/50 transition-colors' />
+                          <BsArrowRight className='w-4 h-4 text-earth-brown/20 group-hover:text-earth-brown/50 transition-colors' />
                         </button>
                       ))}
                     </div>
                   ) : (
                     <div className='text-center py-10'>
                       <div className='w-16 h-16 bg-earth-brown/5 rounded-full flex items-center justify-center mx-auto mb-4'>
-                        <Search className='w-6 h-6 text-earth-brown/30' />
+                        <BiSearch className='w-6 h-6 text-earth-brown/30' />
                       </div>
                       <p className='text-earth-brown/70 font-medium'>
                         نتیجه‌ای یافت نشد
