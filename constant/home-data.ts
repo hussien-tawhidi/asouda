@@ -31,32 +31,32 @@ export const categories = [
   {
     name: "مدرن",
     slug: "modern",
-    image: "/images/categories/modern.jfif",
+    image: "/images/categories/modern.jpg",
   },
   {
     name: "باکس‌دار",
     slug: "storage",
-    image: "/images/categories/space.jfif",
+    image: "/images/categories/space.jpg",
   },
   {
     name: "دو نفره",
     slug: "double",
-    image: "/images/categories/double.jfif",
+    image: "/images/categories/double.jpg",
   },
   {
     name: "یک نفره",
     slug: "single",
-    image: "/images/categories/single.jfif",
+    image: "/images/categories/single.jpg",
   },
   {
     name: "کودک / نوجوان",
     slug: "kids",
-    image: "/images/categories/kid.jfif",
+    image: "/images/categories/kid.jpg",
   },
   {
     name: "سلطنتی",
     slug: "classic",
-    image: "/images/categories/kingdom.jfif",
+    image: "/images/categories/kingdom.jpg",
   },
 ];
 
