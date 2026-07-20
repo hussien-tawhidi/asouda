@@ -1,21 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { iranYekan } from "@/lib/font";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
-
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://asouda.com"), // Change to your domain
-
+  metadataBase: new URL("https://asouda.com"),
   title: {
     default: "آسوده | تولید کننده سرویس خواب مدرن و کلاسیک",
     template: "%s | آسوده",
   },
-
   description:
     "آسوده تولیدکننده انواع سرویس خواب مدرن، کلاسیک، دو نفره، یک نفره و نوجوان با بهترین کیفیت، طراحی زیبا و ارسال به سراسر ایران.",
-
   keywords: [
     "سرویس خواب",
     "سرویس خواب مدرن",
@@ -27,17 +23,9 @@ export const metadata: Metadata = {
     "خرید سرویس خواب",
     "آسوده",
   ],
-
-  authors: [
-    {
-      name: "Asouda",
-    },
-  ],
-
+  authors: [{ name: "Asouda" }],
   creator: "Asouda",
-
   publisher: "Asouda",
-
   robots: {
     index: true,
     follow: true,
@@ -50,17 +38,14 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-
   alternates: {
     canonical: "/",
   },
-
   icons: {
     icon: "/logo.ico",
     shortcut: "/logo.ico",
     apple: "/apple-touch-icon.png",
   },
-
   openGraph: {
     type: "website",
     locale: "fa_IR",
@@ -78,16 +63,23 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "آسوده | تولید کننده سرویس خواب",
     description: "تولید کننده انواع سرویس خواب مدرن و کلاسیک با بهترین کیفیت.",
     images: ["/og-image.jpg"],
   },
-
   category: "Furniture",
+  applicationName: "آسوده",
+  themeColor: "#5b4c3a", // moved from manual head
 };
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#5b4c3a", // optional, you can also keep it in metadata
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -98,15 +90,6 @@ export default function RootLayout({
       lang='fa'
       dir='rtl'
       className={`${iranYekan.variable} h-full antialiased`}>
-      <head>
-        {/* هر متا اضافی برای SEO یا favicon می‌تواند اینجا اضافه شود */}
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <meta name='theme-color' content='#5b4c3a' />
-        <meta
-          name='apple-mobile-web-app-status-bar-style'
-          content='black-translucent'
-        />
-      </head>
       <body className='min-h-full flex flex-col'>
         <main>
           <Header />
