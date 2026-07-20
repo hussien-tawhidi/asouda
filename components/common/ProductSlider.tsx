@@ -5,13 +5,12 @@ import Slider from "react-slick";
 import ExploreBtn from "../common/ExploreBtn";
 import Card from "../most-sells/Card";
 import { MostSellProductType } from "@/types";
+import { mostSellsSliderSetting } from "../most-sells/SliderFeatures";
 
 interface ProductSliderProps {
   title: string;
   description?: string;
   products: MostSellProductType[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  sliderSettings: any;
   exploreTitle?: string;
   onExplore?: () => void;
 }
@@ -20,7 +19,6 @@ export default function ProductSlider({
   title,
   description,
   products,
-  sliderSettings,
   exploreTitle,
   onExplore,
 }: ProductSliderProps) {
@@ -67,7 +65,7 @@ export default function ProductSlider({
         {/* Slider */}
         <Slider
           ref={sliderRef}
-          {...sliderSettings}
+          {...mostSellsSliderSetting}
           className='most-sell-slider'>
           {products.map((product) => {
             const hasDiscount = product.discount > 0;

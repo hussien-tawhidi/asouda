@@ -34,7 +34,6 @@ export const mostSellsSliderSetting = {
   pauseOnHover: true,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
- 
   responsive: [
     {
       breakpoint: 1280,
@@ -54,11 +53,6 @@ export const mostSellsSliderSetting = {
         slidesToShow: 2,
       },
     },
-    {
-      breakpoint: 300,
-      settings: {
-        slidesToShow: 2,
-      },
-    },
+   
   ],
 };

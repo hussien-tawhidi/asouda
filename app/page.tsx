@@ -51,7 +51,6 @@ export default function Home() {
           title="محصولات ویژه"
           description='جدیدترین و محبوب‌ترین محصولات با بهترین کیفیت'
           products={mostSellsProduct}
-          sliderSettings={mostSellsSliderSetting}
           exploreTitle='مشاهده همه محصولات'
         />
       </div>
@@ -59,7 +58,6 @@ export default function Home() {
         title='پرفروش‌ترین سرویس‌ها'
         description='جدیدترین و محبوب‌ترین محصولات با بهترین کیفیت'
         products={mostSellsProduct}
-        sliderSettings={mostSellsSliderSetting}
         exploreTitle='مشاهده همه محصولات'
       />
       <hr className='border-espresso-clay/30 my-3 w-[90%] mx-auto' />
@@ -67,7 +65,6 @@ export default function Home() {
         title='شیک ترین میز ارایشی'
         description='محصولات تازه اضافه شده'
         products={newestSellsProduct}
-        sliderSettings={mostSellsSliderSetting}
         exploreTitle='مشاهده بیشتر'
       />
       <Category />
