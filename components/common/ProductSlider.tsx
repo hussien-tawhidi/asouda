@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import {  Pagination } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -67,11 +67,15 @@ export default function ProductSlider({
         {/* Swiper Slider */}
         <div className='relative'>
           <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={8} // gap between slides
-            slidesPerView={2} // default for mobile
-            navigation
-            pagination={{ clickable: true }}
+            modules={[Pagination]}
+            spaceBetween={8}
+            slidesPerView={2}
+            pagination={{
+              clickable: true,
+              renderBullet: (index, className) => {
+                return `<span class="${className} custom-bullet"></span>`;
+              },
+            }}
             breakpoints={{
               640: {
                 slidesPerView: 2,
@@ -85,9 +89,7 @@ export default function ProductSlider({
                 slidesPerView: 4,
                 spaceBetween: 16,
               },
-            }}
-            className='pb-12' // space for pagination dots
-          >
+            }}>
             {products.map((product) => {
               const hasDiscount = product.discount > 0;
               const discountedPrice = hasDiscount

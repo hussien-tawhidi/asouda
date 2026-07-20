@@ -38,21 +38,25 @@ body {
   scrollbar-width: none;
 }
 
-/* ===========slider custome dots================ */
-.slick-dots li button::before {
-  display: none;
+/* ===========swiper custome dots================ */
+.swiper-pagination {
+  bottom: 0 !important;
 }
 
-.slick-dots li button {
-  width: 1px;
-  height: 3px;
-  background: #424242;
-  border-radius: 9px;
-  transition: all .3s ease;
+/* Normal bullet */
+.custom-bullet {
+  width: 30px;
+  height: 10px;
+  border-radius: 0;
+  background: #d1d5db;
+  opacity: 1 !important;
+  transition: all 0.3s ease;
+  margin: 0 4px !important;
 }
 
-.slick-dots li.slick-active button {
-  width: 20px;
-  height: 2px;
-  background: #8b6b4d;
+/* Active bullet */
+.swiper-pagination-bullet-active.custom-bullet {
+  width: 28px;
+  border-radius: 9999px;
+  background: #7a5c4d; /* Your primary color */
 }
