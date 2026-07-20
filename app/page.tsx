@@ -3,6 +3,7 @@ import ProductSlider from "@/components/common/ProductSlider";
 import FeaturesSection from "@/components/Features";
 import { HeroCollage } from "@/components/hero/Hero";
 import Category from "@/components/home-cate/Category";
+import HomeAboutSection from "@/components/HomeAboutSection";
 import { mostSellsSliderSetting } from "@/components/most-sells/SliderFeatures";
 import { mostSellsProduct, newestSellsProduct } from "@/constant/home-data";
 const banners = [
@@ -45,6 +46,15 @@ export default function Home() {
           <HomeBanner image={banners[1].image} link={banners[1].link} />
         </div>
       </div>
+      <div className='bg-warm-putty'>
+        <ProductSlider
+          title="محصولات ویژه"
+          description='جدیدترین و محبوب‌ترین محصولات با بهترین کیفیت'
+          products={mostSellsProduct}
+          sliderSettings={mostSellsSliderSetting}
+          exploreTitle='مشاهده همه محصولات'
+        />
+      </div>
       <ProductSlider
         title='پرفروش‌ترین سرویس‌ها'
         description='جدیدترین و محبوب‌ترین محصولات با بهترین کیفیت'
@@ -61,6 +71,9 @@ export default function Home() {
         exploreTitle='مشاهده بیشتر'
       />
       <Category />
+      <div className='my-8 h-px bg-linear-to-r from-transparent via-espresso-clay to-transparent md:my-10' />
+
+      <HomeAboutSection />
     </div>
   );
 }

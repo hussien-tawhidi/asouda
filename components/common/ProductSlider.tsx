@@ -39,7 +39,7 @@ export default function ProductSlider({
 
   return (
     <section className='py-6 md:py-24'>
-      <div className='container mx-auto px-4 lg:px-6'>
+      <div className='container mx-auto px-0 lg:px-6'>
         {/* Header */}
         <div className='flex  justify-between md:mb-12 mb-6 gap-4'>
           <div className='space-y-2'>
@@ -76,7 +76,7 @@ export default function ProductSlider({
               : product.price;
 
             return (
-              <div key={product.id} className='h-full px-3 pb-10 md:pb-20'>
+              <div key={product.id} className='h-full px-1 pb-5 md:pb-10'>
                 <Card
                   product={product}
                   isLiked={likedProducts.includes(product.id)}

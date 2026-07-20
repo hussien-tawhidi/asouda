@@ -44,14 +44,15 @@ body {
 }
 
 .slick-dots li button {
-  width: 3px;
+  width: 1px;
   height: 3px;
-  background: #d1d5db;
+  background: #424242;
   border-radius: 9px;
   transition: all .3s ease;
 }
 
 .slick-dots li.slick-active button {
   width: 20px;
+  height: 2px;
   background: #8b6b4d;
 }
