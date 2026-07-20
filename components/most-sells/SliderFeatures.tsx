@@ -1,3 +1,5 @@
+"use client"
+
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ArrowProps {
@@ -32,6 +34,7 @@ export const mostSellsSliderSetting = {
   pauseOnHover: true,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
+ 
   responsive: [
     {
       breakpoint: 1280,

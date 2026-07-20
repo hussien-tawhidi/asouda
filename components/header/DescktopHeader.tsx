@@ -33,6 +33,7 @@ export default function DesktopHeader() {
             alt='لوگوی اسودی'
           />
         </Link>
+        
       </div>
 
       {/* 📌 NAV MENU */}
@@ -43,27 +44,27 @@ export default function DesktopHeader() {
         <span>|</span>
 
         <Link href={"/"} className='hover:text-earth-brown transition'>
-          سرویس خواب
+          سرویس خواب مدرن
         </Link>
         <span>|</span>
 
         <Link href={"/"} className='hover:text-earth-brown transition'>
-          کالکشن‌ها
+          سرویس خواب دو نفره
         </Link>
         <span>|</span>
 
         <Link href={"/"} className='hover:text-earth-brown transition'>
-          فروش ویژه
+          سرویس خواب یک نفره
         </Link>
         <span>|</span>
 
         <Link href={"/"} className='hover:text-earth-brown transition'>
-          جدید
+          سرویس خواب نوجوان
         </Link>
         <span>|</span>
 
         <Link href={"/"} className='hover:text-earth-brown transition'>
-          تماس
+          سرویس خواب سلطنتی
         </Link>
       </nav>
     </section>

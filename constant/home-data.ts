@@ -1,5 +1,40 @@
-import { ShieldCheck, Truck, RotateCcw, Gem } from "lucide-react";
-
+import {
+  ShieldCheck,
+  Truck,
+  RotateCcw,
+  Gem,
+  Send,
+  Phone,
+  Mail,
+  MapPin,
+} from "lucide-react";
+import { BsInstagram, BsFacebook } from "react-icons/bs";
+export const CategotyMenu = [
+  {
+    title: "خانه",
+    href: "/",
+  },
+  {
+    title: "سرویس خواب مدرن",
+    href: "/modern-bedroom-set",
+  },
+  {
+    title: "سرویس خواب دو نفره",
+    href: "/double-bedroom-set",
+  },
+  {
+    title: "سرویس خواب یک نفره",
+    href: "/single-bedroom-set",
+  },
+  {
+    title: "سرویس خواب نوجوان",
+    href: "/teen-bedroom-set",
+  },
+  {
+    title: "سرویس خواب سلطنتی",
+    href: "/royal-bedroom-set",
+  },
+];
 export const whyTrustUs = [
   {
     icon: ShieldCheck,
@@ -32,31 +67,37 @@ export const categories = [
     name: "مدرن",
     slug: "modern",
     image: "/images/categories/modern.jpg",
+    href: "/modern-bedroom-set",
   },
   {
     name: "باکس‌دار",
     slug: "storage",
     image: "/images/categories/space.jpg",
+    href: "/box-bedroom-set",
   },
   {
     name: "دو نفره",
     slug: "double",
     image: "/images/categories/double.jpg",
+    href: "/double-bedroom-set",
   },
   {
     name: "یک نفره",
     slug: "single",
     image: "/images/categories/single.jpg",
+    href: "/single-bedroom-set",
   },
   {
     name: "کودک / نوجوان",
     slug: "kids",
     image: "/images/categories/kid.jpg",
+    href: "/kids-bedroom-set",
   },
   {
     name: "سلطنتی",
     slug: "classic",
     image: "/images/categories/kingdom.jpg",
+    href: "/classic-bedroom-set",
   },
 ];
 
@@ -243,5 +284,59 @@ export const newestSellsProduct = [
     sold: 390,
     stock: 20,
     discount: 15.6,
+  },
+];
+
+export const socialLinks = [
+  {
+    href: "#",
+    icon: BsInstagram,
+    label: "Instagram",
+  },
+  {
+    href: "#",
+    icon: Send,
+    label: "Telegram",
+  },
+  {
+    href: "#",
+    icon: BsFacebook,
+    label: "Facebook",
+  },
+];
+
+export const footerQuickLinks = [
+  {
+    title: "صفحه اصلی",
+    href: "/",
+  },
+  {
+    title: "محصولات",
+    href: "/products",
+  },
+  {
+    title: "درباره ما",
+    href: "/about",
+  },
+  {
+    title: "تماس با ما",
+    href: "/contact",
+  },
+];
+
+export const footerContactInfo = [
+  {
+    icon: Phone,
+    value: "0912 345 6789",
+  },
+  {
+    icon: Mail,
+    value: "info@example.com",
+  },
+  {
+    icon: MapPin,
+    value: "تهران، ایران",
+    className: "items-start",
+    iconClassName: "mt-1",
   },
 ];

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { iranYekan } from "@/lib/font";
 import Header from "@/components/header/Header";
-import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./globals.css";
+import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,8 +27,9 @@ export default function RootLayout({
       <body className='min-h-full flex flex-col'>
         <main>
           <Header />
-          <section className="mb-16">
+          <section className='mb-16'>
             {children}
+            <Footer />
           </section>
         </main>
       </body>
