@@ -54,5 +54,11 @@ export const mostSellsSliderSetting = {
         slidesToShow: 2,
       },
     },
+    {
+      breakpoint: 300,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
   ],
 };
