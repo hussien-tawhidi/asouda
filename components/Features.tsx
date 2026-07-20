@@ -15,7 +15,7 @@ const features = [
   {
     icon: ShieldCheck,
     title: "۱۸ الی ۲۴ ماه ضمانت",
-    desc: "ضمانت ۱۸ ماه تا ۲۴ ماه برای تمامی محصولات تانیل چوب",
+    desc: "ضمانت ۱۸ ماه تا ۲۴ ماه برای تمامی محصولات ",
     color: "from-emerald-500 to-teal-500",
     bgColor: "bg-emerald-50",
     iconBg: "bg-emerald-100",
@@ -62,7 +62,7 @@ const itemVariants = {
 
 export default function FeaturesSection() {
   return (
-    <section className='w-full py-8 bg-linear-to-b from-bone-white to-white overflow-hidden'>
+    <section className='w-full py-8 overflow-hidden'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* گرید ویژگی‌ها */}
         <motion.div
@@ -70,7 +70,7 @@ export default function FeaturesSection() {
           initial='hidden'
           whileInView='visible'
           viewport={{ once: true, margin: "-50px" }}
-          className='grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8'>
+          className='flex justify-between md:w-[80%] mx-auto items-center gap-2 md:gap-8'>
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -82,23 +82,18 @@ export default function FeaturesSection() {
                   y: -8,
                   transition: { duration: 0.3 },
                 }}
-                className='group relative flex flex-col items-center text-center p-2 md:p-8 bg-white/70 backdrop-blur-sm rounded-2xl border border-earth-brown/10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-earth-brown/20'>
+                className='group relative flex flex-col items-center text-center p-2 md:p-4 bg-bone-white backdrop-blur-sm rounded-2xl border border-earth-brown/10 shadow-lg transition-all duration-300 hover:border-earth-brown/20'>
                 {/* افکت گرادیان پس‌زمینه هنگام هاور */}
                 <div className='absolute inset-0 rounded-2xl bg-linear-to-br from-earth-brown/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500' />
 
-                {/* دایره‌های تزئینی */}
-                <div className='absolute -top-4 -right-4 w-20 h-20 rounded-full bg-earth-brown/5 blur-2xl group-hover:blur-3xl transition-all duration-500' />
-                <div className='absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-earth-brown/5 blur-2xl group-hover:blur-3xl transition-all duration-500' />
+         
 
                 {/* آیکون با حلقه‌های متحدالمرکز */}
-                <div className='relative mb-5'>
-                  <div className='absolute inset-0 flex items-center justify-center'>
-                    <div className='w-28 h-28 rounded-full border border-earth-brown/5 animate-pulse' />
-                  </div>
-                  <div className='relative flex items-center justify-center w-20 h-20 rounded-full bg-linear-to-br from-earth-brown/10 to-earth-brown/5 group-hover:scale-110 transition-transform duration-300'>
-                    <div className='flex items-center justify-center w-14 h-14 rounded-full bg-white shadow-md group-hover:shadow-lg transition-shadow duration-300'>
+                <div className='relative md:mb-5'>
+                  <div className='relative flex items-center justify-center md:w-20 md:h-20 w-14 h-14 rounded-full bg-linear-to-br from-earth-brown/10 to-earth-brown/5 group-hover:scale-110 transition-transform duration-300'>
+                    <div className='flex items-center justify-center md:w-14 md:h-14 w-10 h-10 rounded-full bg-bone-white shadow-md group-hover:shadow-lg transition-shadow duration-300'>
                       <Icon
-                        className='md:w-7 md:h-7 w-5 h-5 text-earth-brown'
+                        className='md:w-7 md:h-7 w-4 h-4 text-earth-brown'
                         strokeWidth={1.8}
                       />
                     </div>
@@ -106,14 +101,9 @@ export default function FeaturesSection() {
                 </div>
 
                 {/* عنوان */}
-                <h3 className='md:text-xl text-[11px] font-bold text-earth-brown mb-2 group-hover:text-earth-brown/90 transition-colors'>
+                <h3 className='md:text-sm text-[10px] font-bold text-earth-brown mb-2 group-hover:text-earth-brown/90 transition-colors'>
                   {feature.title}
                 </h3>
-
-                {/* توضیحات */}
-                <p className='md:flex hidden md:text-base text-earth-brown/60 leading-relaxed max-w-xs'>
-                  {feature.desc}
-                </p>
 
                 {/* خط تزئینی پایین */}
                 <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-earth-brown/30 group-hover:w-12 transition-all duration-500 rounded-full' />

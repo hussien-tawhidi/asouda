@@ -29,3 +29,35 @@ body {
   color: var(--color-espresso-clay);
   font-family: var(--font-iranyekan), sans-serif;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ===========slider custome dots================ */
+.slick-dots {
+  bottom: -45px;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #cbd5e1;
+  opacity: 1;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #111827;
+  font-size: 12px;
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+.slick-list {
+  margin: 0 -10px;
+}

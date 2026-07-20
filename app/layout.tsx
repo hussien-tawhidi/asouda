@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { iranYekan } from "@/lib/font";
-import "./globals.css";
 import Header from "@/components/header/Header";
+import "./globals.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",

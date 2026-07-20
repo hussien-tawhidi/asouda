@@ -1,5 +1,5 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect, useRef, useCallback } from "react";
 import { BiSearch } from "react-icons/bi";
 import { BsArrowRight, BsClock } from "react-icons/bs";

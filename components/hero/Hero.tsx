@@ -91,53 +91,9 @@ const HeroCollage = React.forwardRef<HTMLDivElement, HeroCollageProps>(
 
         <motion.div
           style={{ opacity, scale }}
-          className='relative z-10 container mx-auto px-4 py-16 md:py-24 lg:py-32'>
-          {/* محتوای متنی */}
-          <div className='text-center max-w-4xl mx-auto md:space-y-6 space-y-3'>
-            {/* نشان کوچک */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className='inline-flex items-center gap-2 px-4 py-1.5 bg-earth-brown/10 rounded-full text-sm font-medium'>
-              <BiStar className='w-4 h-4 fill-earth-brown' />
-              <span>تولیدکننده‌ی برتر سرویس خواب</span>
-            </motion.div>
-
-            {/* عنوان اصلی */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className='text-2xl md:text-6xl lg:text-7xl font-display font-bold leading-tight '>
-              {title}
-            </motion.h1>
-
-            {/* زیرنویس */}
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className='text-sm md:text-xl max-w-2xl mx-auto leading-relaxed'>
-              {subtitle}
-            </motion.p>
-
-            {/* دکمه CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}>
-              <Link
-                href={ctaLink}
-                className='inline-flex items-center gap-3 md:px-8 px-4 md:py-4 py-2 md:text-md text-sm bg-earth-brown text-bone-white rounded-full hover:bg-earth-brown/90 hover:shadow-xl hover:shadow-earth-brown/20 transition-all duration-300 active:scale-95 font-medium'>
-                {ctaText}
-                <BsArrowRight className='w-5 h-5' />
-              </Link>
-            </motion.div>
-          </div>
-
+          className='relative z-10 container mx-auto md:px-4 py-16 md:py-24 lg:py-32'>
           {/* گالری تصاویر شناور */}
-          <div className='relative mt-12 md:mt-16 h-100 md:h-125 lg:h-150 flex items-center justify-center'>
+          <div className='relative mt-8 md:mt-16 h-100 md:h-125 lg:h-150 flex items-center justify-center'>
             <div className='relative w-full max-w-6xl h-full'>
               {displayImages.map((img, i) => (
                 <motion.div
@@ -186,6 +142,49 @@ const HeroCollage = React.forwardRef<HTMLDivElement, HeroCollageProps>(
                 </motion.div>
               ))}
             </div>
+          </div>
+          {/* محتوای متنی */}
+          <div className='text-center max-w-4xl mx-auto md:space-y-6 md:mt-20 mt-10 space-y-3'>
+            {/* نشان کوچک */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className='inline-flex items-center gap-2 px-4 py-1.5 bg-earth-brown/10 rounded-full text-sm font-medium'>
+              <BiStar className='w-4 h-4 fill-earth-brown' />
+              <span>تولیدکننده‌ی برتر سرویس خواب</span>
+            </motion.div>
+
+            {/* عنوان اصلی */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className='text-2xl md:text-6xl lg:text-7xl font-display font-bold leading-tight '>
+              {title}
+            </motion.h1>
+
+            {/* زیرنویس */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className='text-sm md:text-xl max-w-2xl mx-auto leading-relaxed'>
+              {subtitle}
+            </motion.p>
+
+            {/* دکمه CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}>
+              <Link
+                href={ctaLink}
+                className='inline-flex items-center gap-3 md:px-8 px-4 md:py-4 py-2 md:text-md text-sm bg-earth-brown text-bone-white rounded-full hover:bg-earth-brown/90 hover:shadow-xl hover:shadow-earth-brown/20 transition-all duration-300 active:scale-95 font-medium'>
+                {ctaText}
+                <BsArrowRight className='w-5 h-5' />
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </section>

@@ -32,8 +32,12 @@ export default function MobileHeader() {
           </span>
 
           <div className='flex gap-4 text-[16px]'>
-            <Link href='/wishlist'><PiHeartThin/></Link>
-            <Link href='/account'><BiUser/></Link>
+            <Link href='/wishlist'>
+              <PiHeartThin />
+            </Link>
+            <Link href='/account'>
+              <BiUser />
+            </Link>
           </div>
         </div>
         <div className='flex items-center justify-between px-6'>
@@ -45,7 +49,7 @@ export default function MobileHeader() {
                 width={160}
                 loading='eager'
                 height={20}
-                className='object-fit w-14'
+                className='object-fit w-14 h-auto'
                 alt='آسوده لوگو'
               />
             </Link>

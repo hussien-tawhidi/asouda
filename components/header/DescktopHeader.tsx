@@ -26,9 +26,10 @@ export default function DesktopHeader() {
         <Link href='/'>
           <Image
             src={"/asouda-logo.png"}
+            loading='eager'
             width={150}
             height={150}
-            className='object-fit'
+            className='object-fit w-auto h-auto'
             alt='لوگوی اسودی'
           />
         </Link>
