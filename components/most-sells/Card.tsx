@@ -19,8 +19,7 @@ export default function Card({
   hasDiscount,
   toggleLike,
 }: ProductCardProps) {
-  console.log("🚀 ~ Card ~ hasDiscount:", hasDiscount);
-  // console.log("🚀 ~ Card ~ hasDiscount:", product.discount,product.name,product.price,discountedPrice)
+
   return (
     <div
       dir='rtl'
