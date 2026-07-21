@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { Heart, Star } from "lucide-react";
 import { MostSellProductType } from "@/types";
+import Link from "next/link";
 
 interface ProductCardProps {
   product: MostSellProductType;
   isLiked: boolean;
   discountedPrice: number;
   hasDiscount: boolean;
-  toggleLike: (id: number, e: React.MouseEvent<HTMLButtonElement>) => void;
+  toggleLike: (id: string, e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function Card({
@@ -19,24 +20,24 @@ export default function Card({
   hasDiscount,
   toggleLike,
 }: ProductCardProps) {
-
   return (
     <div
       dir='rtl'
       className='group overflow-hidden md:rounded-[28px] bg-bone-white rounded text-right  shadow-xl transition duration-300 hover:-translate-y-1 hover:shadow-2xl'>
       {/* Image */}
-      <div className='relative md:p-4'>
+      <Link href={product._id} className='relative md:p-4'>
         <div className='relative overflow-hidden md:rounded-3xl bg-white aspect-square'>
           <Image
-            src={product.image}
+            src={product.image[0]}
             alt={product.name}
-            fill
-            className='object-cover transition duration-500 group-hover:scale-105'
+            width={400}
+            height={400}
+            className='object-cover h-full w-auto transition duration-500 group-hover:scale-105'
           />
 
           {/* Wishlist */}
           <button
-            onClick={(e) => toggleLike(product.id, e)}
+            onClick={(e) => toggleLike(product._id, e)}
             className='absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full backdrop-blur'>
             <Heart
               size={18}
@@ -48,11 +49,11 @@ export default function Card({
             />
           </button>
 
-          <div className='absolute right-0 left-0 bottom-0 bg-espresso-clay/60  flex items-center justify-center text-bone-white w-full py-1 text-xs'>
-          ثبت سفارش
+          <div className='absolute right-0 left-0 bottom-0 bg-espresso-clay/60 md:hidden  flex items-center justify-center text-bone-white w-full py-1 text-xs'>
+            ثبت سفارش
           </div>
         </div>
-      </div>
+      </Link>
 
       {/* Content */}
       <div className='md:px-5 px-0 md:pb-5 pb-0'>
@@ -87,9 +88,10 @@ export default function Card({
               </span>
             </h2>
           </div>
-          <button className='rounded-xl border border-espresso-clay md:flex hidden px-5 py-2 text-sm font-semibold text-espresso-clay transition hover:bg-espresso-clay hover:text-white'>
-            ثبت سفارش
-          </button>
+            <button className='rounded-xl border text-nowrap border-espresso-clay md:flex hidden px-5 py-2 text-sm font-semibold text-espresso-clay transition hover:bg-espresso-clay hover:text-white'>
+              ثبت سفارش
+            </button>
+         
         </div>
       </div>
     </div>

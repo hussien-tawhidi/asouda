@@ -149,12 +149,12 @@ export default function MobileMenuDrawer({
 
                       <div className='flex flex-1 flex-col'>
                         <span
-                          className={`font-medium ${
+                          className={`font-medium text-sm ${
                             isActive ? "" : "text-espresso-clay/90"
                           }`}>
                           {item.name}
                         </span>
-                        <span className='text-xs text-espresso-clay/80'>
+                        <span className='text-[10px] text-espresso-clay/70'>
                           {isActive ? "همین حالا ببینید" : "مشاهده محصولات"}
                         </span>
                       </div>

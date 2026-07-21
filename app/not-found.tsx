@@ -9,7 +9,7 @@ export default function NotFound() {
   return (
     <section>
       <Header />
-      <div className='md:mb-0 mb-16'>
+      <div className='md:mb-0 md:mt-0 mt-20 mb-16'>
         <div className='flex items-center justify-center'>
           <div className='flex flex-col items-center justify-center text-center px-6 py-10'>
             {/* تصویر */}

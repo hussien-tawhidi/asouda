@@ -1,6 +1,6 @@
 "use client";
 
-import { CategotyMenu } from "@/constant/home-data";
+import { categories } from "@/constant/home-data";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -69,7 +69,7 @@ export default function DesktopHeader() {
       {/* Navigation */}
       <nav className='mx-auto flex h-14 max-w-7xl items-center justify-center px-6'>
         <ul className='flex items-center gap-6 text-sm font-medium text-espresso-clay'>
-          {CategotyMenu.map((item, index) => (
+          {categories.map((item, index) => (
             <li key={item.href} className='flex items-center gap-6'>
               <Link
                 href={item.href}
@@ -82,10 +82,10 @@ export default function DesktopHeader() {
                       ? "text-earth-brown after:w-full"
                       : ""
                   }`}>
-                {item.title}
+                {item.name}
               </Link>
 
-              {index !== CategotyMenu.length - 1 && (
+              {index !== categories.length - 1 && (
                 <span className='text-espresso-clay/30'>|</span>
               )}
             </li>

@@ -28,9 +28,9 @@ export default function ProductSlider({
   exploreTitle,
   onExplore,
 }: ProductSliderProps) {
-  const [likedProducts, setLikedProducts] = useState<number[]>([]);
+  const [likedProducts, setLikedProducts] = useState<string[]>([]);
 
-  const toggleLike = (productId: number, e: React.MouseEvent) => {
+  const toggleLike = (productId: string, e: React.MouseEvent) => {
     e.stopPropagation();
     setLikedProducts((prev) =>
       prev.includes(productId)
@@ -97,10 +97,10 @@ export default function ProductSlider({
                 : product.price;
 
               return (
-                <SwiperSlide key={product.id} className="pb-14">
+                <SwiperSlide key={product._id} className="pb-14">
                   <Card
                     product={product}
-                    isLiked={likedProducts.includes(product.id)}
+                    isLiked={likedProducts.includes(product._id)}
                     discountedPrice={discountedPrice}
                     hasDiscount={hasDiscount}
                     toggleLike={toggleLike}

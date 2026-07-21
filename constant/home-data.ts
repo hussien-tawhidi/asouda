@@ -15,32 +15,6 @@ import { BsInstagram, BsFacebook } from "react-icons/bs";
 import { Clock } from "lucide-react";
 import { BiMap, BiPhone, BiEnvelope } from "react-icons/bi";
 
-export const CategotyMenu = [
-  {
-    title: "خانه",
-    href: "/",
-  },
-  {
-    title: "سرویس خواب مدرن",
-    href: "/modern-bedroom-set",
-  },
-  {
-    title: "سرویس خواب دو نفره",
-    href: "/double-bedroom-set",
-  },
-  {
-    title: "سرویس خواب یک نفره",
-    href: "/single-bedroom-set",
-  },
-  {
-    title: "سرویس خواب نوجوان",
-    href: "/teen-bedroom-set",
-  },
-  {
-    title: "سرویس خواب سلطنتی",
-    href: "/royal-bedroom-set",
-  },
-];
 export const whyTrustUs = [
   {
     icon: ShieldCheck,
@@ -70,50 +44,60 @@ export const whyTrustUs = [
 
 export const categories = [
   {
-    name: "مدرن",
+    name: "خانه",
+    slug: "home",
+    image: "/images/categories/modern.jpg", // در صورت نیاز تصویر مناسب قرار دهید
+    href: "/",
+  },
+  {
+    name: "سرویس خواب مدرن",
     slug: "modern",
     image: "/images/categories/modern.jpg",
-    href: "/modern-bedroom-set",
+    href: "/category/modern-bedroom-set",
   },
   {
-    name: "باکس‌دار",
+    name: "سرویس خواب باکس‌دار",
     slug: "storage",
     image: "/images/categories/space.jpg",
-    href: "/box-bedroom-set",
+    href: "/category/box-bedroom-set",
   },
   {
-    name: "دو نفره",
+    name: "سرویس خواب دو نفره",
     slug: "double",
     image: "/images/categories/double.jpg",
-    href: "/double-bedroom-set",
+    href: "/category/double-bedroom-set",
   },
   {
-    name: "یک نفره",
+    name: "سرویس خواب یک نفره",
     slug: "single",
     image: "/images/categories/single.jpg",
-    href: "/single-bedroom-set",
+    href: "/category/single-bedroom-set",
   },
   {
-    name: "کودک / نوجوان",
+    name: "سرویس خواب کودک / نوجوان",
     slug: "kids",
     image: "/images/categories/kid.jpg",
-    href: "/kids-bedroom-set",
+    href: "/category/kids-bedroom-set",
   },
   {
-    name: "سلطنتی",
+    name: "سرویس خواب سلطنتی",
     slug: "classic",
     image: "/images/categories/kingdom.jpg",
-    href: "/classic-bedroom-set",
+    href: "/category/classic-bedroom-set",
   },
 ];
 
 export const mostSellsProduct = [
   {
-    id: 1,
+    _id: "1",
     name: "سرویس خواب دونفره مدل رویال",
     price: 3850000,
-    image: "/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg",
-    category: "سرویس خواب",
+    // image: "/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg",
+    image: [
+      "/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg",
+      "/images/models/1/Kiyan-v2-bedset-porihj-n10_xAY.jpeg",
+    ],
+    category: "سرویس خواب سلطنتی",
     size: "دونفره",
     material: "چوب راش و MDF با روکش",
     color: "گردویی و کرم",
@@ -140,13 +124,31 @@ export const mostSellsProduct = [
     frameType: "چوبی با روکش",
     assemblyRequired: true,
     warranty: "۵ سال ضمانت",
+    colors: [
+      {
+        name: "سفید",
+        value: "#fff",
+      },
+      {
+        name: "e",
+        value: "#eee",
+      },
+      {
+        name: "سفید",
+        value: "#000",
+      },
+      {
+        name: "سفید",
+        value: "#999",
+      },
+    ],
   },
   {
-    id: 2,
+    _id: "2",
     name: "سرویس خواب یک‌نفره مدل آرام",
     price: 2450000,
-    image: "/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg",
-    category: "سرویس خواب",
+    image: ["/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg"],
+    category: "سرویس خواب سلطنتی",
     size: "یک‌نفره",
     material: "MDF با کیفیت و فلز",
     color: "خاکستری",
@@ -172,13 +174,19 @@ export const mostSellsProduct = [
     frameType: "MDF و فلز",
     assemblyRequired: true,
     warranty: "۳ سال ضمانت",
+    colors: [
+      {
+        name: "سفید",
+        value: "#fff",
+      },
+    ],
   },
   {
-    id: 3,
+    _id: "3",
     name: "سرویس خواب دونفره مدل کلاسیک",
     price: 4290000,
-    image: "/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg",
-    category: "سرویس خواب",
+    image: ["/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg"],
+    category: "سرویس خواب سلطنتی",
     size: "دونفره",
     material: "چوب گردو و MDF با روکش",
     color: "طوسی و گردویی",
@@ -204,13 +212,19 @@ export const mostSellsProduct = [
     frameType: "چوبی با روکش",
     assemblyRequired: true,
     warranty: "۵ سال ضمانت",
+    colors: [
+      {
+        name: "سفید",
+        value: "#fff",
+      },
+    ],
   },
   {
-    id: 4,
+    _id: "4",
     name: "سرویس خواب دونفره مدل گلستان",
     price: 4650000,
-    image: "/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg",
-    category: "سرویس خواب",
+    image: ["/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg"],
+    category: "سرویس خواب سلطنتی",
     size: "دونفره",
     material: "چوب راش و پارچه مخمل",
     color: "سفید و طلایی",
@@ -236,13 +250,19 @@ export const mostSellsProduct = [
     frameType: "چوبی با پوشش مخمل",
     assemblyRequired: true,
     warranty: "۵ سال ضمانت",
+    colors: [
+      {
+        name: "سفید",
+        value: "#fff",
+      },
+    ],
   },
   {
-    id: 5,
+    _id: "5",
     name: "سرویس خواب کینگ مدل لوکس",
     price: 5190000,
-    image: "/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg",
-    category: "سرویس خواب",
+    image: ["/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg"],
+    category: "سرویس خواب سلطنتی",
     size: "کینگ",
     material: "چوب گردو و چرم",
     color: "قهوه‌ای تیره",
@@ -270,12 +290,18 @@ export const mostSellsProduct = [
     frameType: "چوبی با روکش چرم",
     assemblyRequired: true,
     warranty: "۷ سال ضمانت",
+    colors: [
+      {
+        name: "سفید",
+        value: "#fff",
+      },
+    ],
   },
   {
-    id: 6,
+    _id: "6",
     name: "سرویس خواب کودک مدل ستاره",
     price: 1890000,
-    image: "/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg",
+    image: ["/images/models/1/Kiyan-V2-poi-n27_QM5.jpeg"],
     category: "سرویس خواب کودک",
     size: "یک‌نفره",
     material: "MDF با روکش و فلز",
@@ -303,99 +329,24 @@ export const mostSellsProduct = [
     frameType: "MDF با روکش",
     assemblyRequired: true,
     warranty: "۳ سال ضمانت",
-  },
-];
-
-export const newestSellsProduct = [
-  {
-    id: 1,
-    name: "سرویس روتختی دونفره مدل رویال",
-    price: 3850000,
-    image: "/images/models/beauty-desk/1.jpg",
-    category: "سرویس روتختی",
-    size: "دونفره",
-    material: "پنبه ۱۰۰٪",
-    color: "سفید و طوسی",
-    rating: 4.9,
-    reviews: 148,
-    sold: 620,
-    stock: 18,
-    discount: 10,
-  },
-  {
-    id: 2,
-    name: "سرویس روتختی یک‌نفره مدل آرام",
-    price: 2450000,
-    image: "/images/models/beauty-desk/1.jpg",
-    category: "سرویس روتختی",
-    size: "یک‌نفره",
-    material: "میکروفایبر",
-    color: "آبی",
-    rating: 4.8,
-    reviews: 95,
-    sold: 480,
-    stock: 24,
-    discount: 11,
-  },
-  {
-    id: 3,
-    name: "سرویس روتختی دونفره مدل کلاسیک",
-    price: 4290000,
-    image: "/images/models/beauty-desk/1.jpg",
-    category: "سرویس روتختی",
-    size: "دونفره",
-    material: "ساتن",
-    color: "کرم",
-    rating: 4.7,
-    reviews: 132,
-    sold: 530,
-    stock: 15,
-    discount: 13,
-  },
-  {
-    id: 4,
-    name: "سرویس روتختی سه‌بعدی مدل گلستان",
-    price: 4650000,
-    image: "/images/models/beauty-desk/1.jpg",
-    category: "سرویس روتختی",
-    size: "دونفره",
-    material: "پنبه و پلی‌استر",
-    color: "سفید و صورتی",
-    rating: 4.9,
-    reviews: 176,
-    sold: 710,
-    stock: 12,
-    discount: 8.4,
-  },
-  {
-    id: 5,
-    name: "سرویس روتختی هتلی مدل لوکس",
-    price: 5190000,
-    image: "/images/models/beauty-desk/1.jpg",
-    category: "سرویس روتختی",
-    size: "کینگ",
-    material: "پنبه هتلی",
-    color: "سفید",
-    rating: 5.0,
-    reviews: 203,
-    sold: 845,
-    stock: 10,
-    discount: 10,
-  },
-  {
-    id: 6,
-    name: "سرویس روتختی کودک مدل ستاره",
-    price: 1890000,
-    image: "/images/models/beauty-desk/1.jpg",
-    category: "سرویس روتختی کودک",
-    size: "یک‌نفره",
-    material: "پنبه نرم",
-    color: "آبی آسمانی",
-    rating: 4.8,
-    reviews: 84,
-    sold: 390,
-    stock: 20,
-    discount: 15.6,
+    colors: [
+      {
+        name: "سفید",
+        value: "#fff",
+      },
+      {
+        name: "e",
+        value: "#eee",
+      },
+      {
+        name: "سفید",
+        value: "#fff",
+      },
+      {
+        name: "سفید",
+        value: "#fff",
+      },
+    ],
   },
 ];
 
