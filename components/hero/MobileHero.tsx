@@ -31,10 +31,10 @@ export default function MobileHero({ images }: { images: string[] }) {
               <Image
                 src={item}
                 alt={`Hero banner ${i + 1}`}
-                fill
+                width={400}
+                height={400}
                 priority={i === 0}
-                sizes='100vw'
-                className='object-cover'
+                className='object-cover w-auto h-full'
               />
             </div>
           </SwiperSlide>
