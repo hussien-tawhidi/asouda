@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { iranYekan } from "@/lib/font";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -90,15 +88,7 @@ export default function RootLayout({
       lang='fa'
       dir='rtl'
       className={`${iranYekan.variable} h-full antialiased`}>
-      <body className='min-h-full flex flex-col'>
-        <main>
-          <Header />
-          <section className='mb-16'>
-            {children}
-            <Footer />
-          </section>
-        </main>
-      </body>
+      <body className='min-h-full flex flex-col'>{children}</body>
     </html>
   );
 }

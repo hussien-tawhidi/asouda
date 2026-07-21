@@ -4,7 +4,6 @@ import FeaturesSection from "@/components/Features";
 import { HeroCollage } from "@/components/hero/Hero";
 import Category from "@/components/home-cate/Category";
 import HomeAboutSection from "@/components/HomeAboutSection";
-import { mostSellsSliderSetting } from "@/components/most-sells/SliderFeatures";
 import { mostSellsProduct, newestSellsProduct } from "@/constant/home-data";
 const banners = [
   {
@@ -39,10 +38,10 @@ export default function Home() {
       <FeaturesSection />
 
       <div className='flex flex-col gap-10 md:w-[90%] w-[95%] my-10 mx-auto'>
-        <div className='md:w-[70%] w-[90%] ml-auto'>
+        <div className='md:w-[70%] w-[95%] ml-auto'>
           <HomeBanner image={banners[0].image} link={banners[0].link} />
         </div>
-        <div className='md:w-[70%] w-[90%] mr-auto'>
+        <div className='md:w-[70%] w-[95%] mr-auto'>
           <HomeBanner image={banners[1].image} link={banners[1].link} />
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUp, Mail } from "lucide-react"; // ← new icons
+import { Mail } from "lucide-react"; // ← new icons
 import {
   footerContactInfo,
   footerQuickLinks,
@@ -9,10 +9,7 @@ import {
 } from "@/constant/home-data";
 
 export default function Footer() {
-  // Smooth scroll to top
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+
 
   return (
     <>

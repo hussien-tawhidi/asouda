@@ -1,72 +1,97 @@
 "use client";
 
+import { CategotyMenu } from "@/constant/home-data";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import SearchBar from "./SearchBar";
+import SocialIconsContact from "../common/SocialIconsContact";
 
 export default function DesktopHeader() {
-  return (
-    <section className='w-full border-b border-espresso-clay/10'>
-      {/* 🔝 TOP BAR */}
-      <div className='bg-espresso-clay text-bone-white text-xs px-10 py-2 flex justify-between'>
-        <span>
-          خوش آمدید |{" "}
-          <Link href='/login' className='underline'>
-            ورود
-          </Link>
-        </span>
+  const pathname = usePathname();
 
-        <div className='flex gap-4'>
-          <Link href='/wishlist'>علاقه‌مندی‌ها</Link>
-          <Link href='/account'>حساب کاربری</Link>
+  return (
+    <header className='w-full border-b border-espresso-clay/10 shadow-sm'>
+      {/* Top Bar */}
+      <div className='bg-espresso-clay text-bone-white'>
+        <div className='mx-auto flex h-9 max-w-7xl items-center justify-between px-6 text-xs'>
+          <span>
+            خوش آمدید |{" "}
+            <Link
+              href='/login'
+              className='underline underline-offset-4 hover:text-earth-brown transition-colors'>
+              ورود
+            </Link>
+          </span>
+
+          <div className='flex items-center gap-5'>
+            <Link
+              href='/wishlist'
+              className='hover:text-earth-brown transition-colors'>
+              علاقه‌مندی‌ها
+            </Link>
+
+            <Link
+              href='/account'
+              className='hover:text-earth-brown transition-colors'>
+              حساب کاربری
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* 🏷 LOGO */}
-      <div className='flex justify-center items-center py-3'>
-        <Link href='/'>
-          <Image
-            src={"/asouda-logo.png"}
-            loading='eager'
-            width={150}
-            height={150}
-            className='object-fit w-auto h-auto'
-            alt='لوگوی اسودی'
-          />
-        </Link>
-        
+      {/* Logo + Search + Slogan */}
+      <div className='mx-auto flex max-w-7xl items-center justify-between gap-8 px-6 py-5'>
+        <div className='flex items-center gap-2'>
+          <Link href='/' className='shrink-0'>
+            <Image
+              src='/asouda-logo.png'
+              alt='لوگوی اسودی'
+              width={180}
+              height={60}
+              priority
+              className='h-12 w-auto'
+            />
+          </Link>
+          <p className='text-xl font-semibold tracking-wide'>
+            راحتی که ماندگار است
+          </p>
+          <SearchBar />
+        </div>
+
+        <div className='shrink-0'>
+          <SocialIconsContact aboutInfo />
+        </div>
       </div>
 
-      {/* 📌 NAV MENU */}
-      <nav className='flex justify-center items-center gap-6 text-xs text-espresso-clay pb-4'>
-        <Link href={"/"} className='hover:text-earth-brown transition'>
-          خانه
-        </Link>
-        <span>|</span>
+      <div className='mx-auto h-px max-w-7xl bg-linear-to-r from-transparent via-espresso-clay/30 to-transparent' />
 
-        <Link href={"/"} className='hover:text-earth-brown transition'>
-          سرویس خواب مدرن
-        </Link>
-        <span>|</span>
+      {/* Navigation */}
+      <nav className='mx-auto flex h-14 max-w-7xl items-center justify-center px-6'>
+        <ul className='flex items-center gap-6 text-sm font-medium text-espresso-clay'>
+          {CategotyMenu.map((item, index) => (
+            <li key={item.href} className='flex items-center gap-6'>
+              <Link
+                href={item.href}
+                className={`relative py-2 transition-colors duration-300
+                  after:absolute after:bottom-0 after:left-0 after:h-0.5
+                  after:w-0 after:bg-earth-brown after:transition-all
+                  after:duration-300 hover:text-earth-brown hover:after:w-full
+                  ${
+                    pathname === item.href
+                      ? "text-earth-brown after:w-full"
+                      : ""
+                  }`}>
+                {item.title}
+              </Link>
 
-        <Link href={"/"} className='hover:text-earth-brown transition'>
-          سرویس خواب دو نفره
-        </Link>
-        <span>|</span>
-
-        <Link href={"/"} className='hover:text-earth-brown transition'>
-          سرویس خواب یک نفره
-        </Link>
-        <span>|</span>
-
-        <Link href={"/"} className='hover:text-earth-brown transition'>
-          سرویس خواب نوجوان
-        </Link>
-        <span>|</span>
-
-        <Link href={"/"} className='hover:text-earth-brown transition'>
-          سرویس خواب سلطنتی
-        </Link>
+              {index !== CategotyMenu.length - 1 && (
+                <span className='text-espresso-clay/30'>|</span>
+              )}
+            </li>
+          ))}
+        </ul>
       </nav>
-    </section>
+    </header>
   );
 }

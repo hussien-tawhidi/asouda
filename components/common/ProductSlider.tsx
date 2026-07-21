@@ -40,7 +40,7 @@ export default function ProductSlider({
   };
 
   return (
-    <section className='py-6 md:py-24'>
+    <section className='py-6 md:py-12'>
       <div className='container mx-auto px-0 lg:px-6'>
         {/* Header */}
         <div className='flex justify-between md:mb-12 mb-6 gap-4 px-4 lg:px-0'>
@@ -97,7 +97,7 @@ export default function ProductSlider({
                 : product.price;
 
               return (
-                <SwiperSlide key={product.id}>
+                <SwiperSlide key={product.id} className="pb-14">
                   <Card
                     product={product}
                     isLiked={likedProducts.includes(product.id)}

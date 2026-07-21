@@ -123,14 +123,14 @@ export default function SearchBar() {
         onClick={openSearch}
         className='p-2 rounded-full hover:bg-earth-brown/10 transition-colors duration-200'
         aria-label='جستجو'>
-        <BiSearch className='w-5 h-5 text-earth-brown' />
+        <BiSearch className='w-5 h-5' />
       </button>
 
       {/* اورلی جستجو */}
       {isOpen && (
         <div
           ref={overlayRef}
-          className='fixed inset-0 z-50 h-screen bg-black/40 backdrop-blur-sm flex items-start justify-center p-4 animate-in fade-in duration-300'
+          className='fixed inset-0 z-9999 h-screen bg-black/40 backdrop-blur-sm flex items-start justify-center p-4 animate-in fade-in duration-300'
           onClick={handleOverlayClick}>
           <div className='w-full max-w-2xl bg-bone-white rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-top-10 duration-300'>
             {/* نوار بالا */}
