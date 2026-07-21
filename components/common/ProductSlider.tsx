@@ -4,11 +4,6 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {  Pagination } from "swiper/modules";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
 import ExploreBtn from "../common/ExploreBtn";
 import Card from "../most-sells/Card";
 import { MostSellProductType } from "@/types";

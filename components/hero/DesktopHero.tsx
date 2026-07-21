@@ -78,7 +78,7 @@ const HeroCollage = React.forwardRef<HTMLDivElement, HeroCollageProps>(
       <section
         ref={containerRef}
         className={cn(
-          "relative w-full min-h-screen overflow-hidden md:mt-0 mt-10",
+          "relative w-full md:block hidden min-h-screen overflow-hidden md:mt-0 mt-10",
           className,
         )}
         {...props}>

@@ -1,7 +1,8 @@
 import HomeBanner from "@/components/common/HomeBanner";
 import ProductSlider from "@/components/common/ProductSlider";
 import FeaturesSection from "@/components/Features";
-import { HeroCollage } from "@/components/hero/Hero";
+import { HeroCollage } from "@/components/hero/DesktopHero";
+import MobileHero from "@/components/hero/MobileHero";
 import Category from "@/components/home-cate/Category";
 import HomeAboutSection from "@/components/HomeAboutSection";
 import { mostSellsProduct } from "@/constant/home-data";
@@ -27,6 +28,7 @@ export default function Home() {
   ];
   return (
     <div className='w-full overflow-hidden pb-20'>
+      <MobileHero images={images}/>
       <HeroCollage
         title='خوابی رویایی با آسوده'
         subtitle='با بهترین متریال‌ها و طراحی‌های مدرن، آرامش را به خانه‌تان بیاورید.'

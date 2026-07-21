@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { iranYekan } from "@/lib/font";
 import "./globals.css";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://asouda.com"),

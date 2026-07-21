@@ -60,3 +60,25 @@ body {
   border-radius: 9999px;
   background: #7a5c4d; /* Your primary color */
 }
+/* ====mobile hero */
+.mobileHeroSwiper .swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  bottom: 14px !important;
+}
+
+.mobileHeroSwiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #d1d5db;
+  opacity: 1;
+  transition: all .35s ease;
+}
+
+.mobileHeroSwiper .swiper-pagination-bullet-active {
+  width: 32px;
+  background: #5b4c3a; /* your primary color */
+}

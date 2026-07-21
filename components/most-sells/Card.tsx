@@ -25,7 +25,7 @@ export default function Card({
       dir='rtl'
       className='group overflow-hidden md:rounded-[28px] bg-bone-white rounded text-right  shadow-xl transition duration-300 hover:-translate-y-1 hover:shadow-2xl'>
       {/* Image */}
-      <Link href={product._id} className='relative md:p-4'>
+      <Link href={product._id} className='relative '>
         <div className='relative overflow-hidden md:rounded-3xl bg-white aspect-square'>
           <Image
             src={product.image[0]}

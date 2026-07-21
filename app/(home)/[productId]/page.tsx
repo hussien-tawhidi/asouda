@@ -54,7 +54,7 @@ export default function ProductDetailsPage() {
       <section className='mt-14'>
         <h2 className='mb-5 md:text-2xl font-bold'>توضیحات محصول</h2>
 
-        <p className='leading-8 md:text-sm text-[11px] text-gray-600'>
+        <p className='leading-8 md:text-sm text-[11px] text-espresso-clay/80'>
           این تشک با استفاده از بهترین متریال تولید شده و برای خواب راحت، کاهش
           فشار بر ستون فقرات و افزایش کیفیت استراحت طراحی شده است. پارچه ضد
           حساسیت، اسفنج باکیفیت و دوام بالا از ویژگی‌های اصلی این محصول هستند.
