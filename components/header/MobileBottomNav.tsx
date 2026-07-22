@@ -62,16 +62,21 @@ export default function MobileBottomNav({
             </Link>
           );
         })}
-        <div
-          className='relative flex min-h-15 w-full flex-col items-center justify-center
-                px-3 py-2 transition-all duration-200
-                active:scale-95 hover:bg-earth-brown/5'>
+        <div className='flex w-full items-center justify-center'>
           <button
             onClick={onToggleMenu}
-            className='rounded-lg p-1 text-2xl text-espresso-clay transition hover:bg-gray-100'
-            aria-label={isMenuOpen ? "بستن منو" : "باز کردن منو"}>
-            {isMenuOpen ? <BiX /> : <PiListHeartLight/>}
-            <span className='mt-1 text-[11px]'>لیست ها</span>
+            className={`
+      flex flex-col items-center justify-center
+      rounded-2xl px-4 py-2
+      transition-all duration-300
+      ${
+        isMenuOpen
+          ? "bg-earth-brown text-white shadow-lg"
+          : "text-earth-brown hover:bg-earth-brown/10"
+      }
+    `}>
+            {isMenuOpen ? <BiX size={24} /> : <PiListHeartLight size={24} />}
+            <span className='mt-1 text-[11px]'>لیست‌ها</span>
           </button>
         </div>
       </nav>
