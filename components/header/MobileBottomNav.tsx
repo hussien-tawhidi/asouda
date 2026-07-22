@@ -67,7 +67,7 @@ export default function MobileBottomNav({
             onClick={onToggleMenu}
             className={`
       flex flex-col items-center justify-center
-      rounded-2xl px-4 py-2
+      rounded-2xl px-4 py-2 text-espresso-clay/70
       transition-all duration-300
       ${
         isMenuOpen
@@ -75,8 +75,8 @@ export default function MobileBottomNav({
           : "text-earth-brown hover:bg-earth-brown/10"
       }
     `}>
-            {isMenuOpen ? <BiX size={24} /> : <PiListHeartLight size={24} />}
-            <span className='mt-1 text-[11px]'>لیست‌ها</span>
+            {isMenuOpen ? <BiX size={24} /> : <PiListHeartLight size={22} />}
+            <span className='mt-1 text-[11px] font-medium'>لیست‌ها</span>
           </button>
         </div>
       </nav>
