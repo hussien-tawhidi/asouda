@@ -43,8 +43,8 @@ export default function MobileBottomNav({
                 active:scale-95 hover:bg-earth-brown/5
                 ${
                   isActive
-                    ? "bg-earth-brown/10 font-medium text-earth-brown"
-                    : "text-earth-brown/70"
+                    ? "bg-earth-brown/10 font-medium text-espresso-clay"
+                    : "text-espresso-clay/70"
                 }
               `}>
               <Icon
@@ -65,17 +65,8 @@ export default function MobileBottomNav({
         <div className='flex w-full items-center justify-center'>
           <button
             onClick={onToggleMenu}
-            className={`
-      flex flex-col items-center justify-center
-      rounded-2xl px-4 py-2 text-espresso-clay/70
-      transition-all duration-300
-      ${
-        isMenuOpen
-          ? "bg-earth-brown text-white shadow-lg"
-          : "text-earth-brown hover:bg-earth-brown/10"
-      }
-    `}>
-            {isMenuOpen ? <BiX size={24} /> : <PiListHeartLight size={22} />}
+            className={` flex flex-col items-center justify-center rounded-2xl px-4 py-2 text-espresso-clay/70 transition-all duration-300`}>
+            <PiListHeartLight size={22} />
             <span className='mt-1 text-[11px] font-medium'>لیست‌ها</span>
           </button>
         </div>
