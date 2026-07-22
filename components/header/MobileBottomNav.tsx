@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconType } from "react-icons";
+import { BiMenu, BiX } from "react-icons/bi";
+import { CgMenuHotdog } from "react-icons/cg";
+import { PiListHeartLight } from "react-icons/pi";
 
 interface NavItem {
   name: string;
@@ -12,11 +15,16 @@ interface NavItem {
 
 interface MobileBottomNavProps {
   navItems: NavItem[];
+  isMenuOpen: boolean;
+  onToggleMenu: () => void;
 }
 
-export default function MobileBottomNav({ navItems }: MobileBottomNavProps) {
+export default function MobileBottomNav({
+  navItems,
+  isMenuOpen,
+  onToggleMenu,
+}: MobileBottomNavProps) {
   const pathname = usePathname();
-
   return (
     <section className='fixed bottom-0 left-0 z-50 w-full border-t border-earth-brown/20 bg-bone-white/90 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] backdrop-blur-md'>
       <nav className='mx-auto flex max-w-7xl items-center justify-around'>
@@ -54,6 +62,18 @@ export default function MobileBottomNav({ navItems }: MobileBottomNavProps) {
             </Link>
           );
         })}
+        <div
+          className='relative flex min-h-15 w-full flex-col items-center justify-center
+                px-3 py-2 transition-all duration-200
+                active:scale-95 hover:bg-earth-brown/5'>
+          <button
+            onClick={onToggleMenu}
+            className='rounded-lg p-1 text-2xl text-espresso-clay transition hover:bg-gray-100'
+            aria-label={isMenuOpen ? "بستن منو" : "باز کردن منو"}>
+            {isMenuOpen ? <BiX /> : <PiListHeartLight/>}
+            <span className='mt-1 text-[11px]'>لیست ها</span>
+          </button>
+        </div>
       </nav>
     </section>
   );

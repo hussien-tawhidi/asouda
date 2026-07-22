@@ -3,20 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import SearchBar from "./SearchBar";
-import { BiMenu, BiUser, BiX } from "react-icons/bi";
-import { BsInstagram, BsWhatsapp } from "react-icons/bs";
+import { BiUser } from "react-icons/bi";
 import { PiHeartThin } from "react-icons/pi";
 import SocialIconsContact from "../common/SocialIconsContact";
 
-interface MobileTopHeaderProps {
-  isMenuOpen: boolean;
-  onToggleMenu: () => void;
-}
-
-export default function MobileTopHeader({
-  isMenuOpen,
-  onToggleMenu,
-}: MobileTopHeaderProps) {
+export default function MobileTopHeader() {
   return (
     <section className='fixed top-0 left-0 z-50 w-full border-b border-earth-brown/20 bg-bone-white/80 shadow-sm backdrop-blur-md'>
       {/* Top Bar */}
@@ -62,13 +53,6 @@ export default function MobileTopHeader({
         {/* Actions */}
         <div className='mr-2 flex shrink-0 items-center'>
           <SocialIconsContact />
-
-          <button
-            onClick={onToggleMenu}
-            className='rounded-lg p-1 text-2xl text-espresso-clay transition hover:bg-gray-100'
-            aria-label={isMenuOpen ? "بستن منو" : "باز کردن منو"}>
-            {isMenuOpen ? <BiX /> : <BiMenu />}
-          </button>
         </div>
       </div>
     </section>

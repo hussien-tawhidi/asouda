@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { BiHome, BiPhone, BiSolidUser } from "react-icons/bi";
+import { BiHome, BiPhone } from "react-icons/bi";
 import { BsInfo } from "react-icons/bs";
 import { categories } from "@/constant/home-data";
 import MobileMenuDrawer from "./MobileMenuDrawer";
@@ -37,16 +37,12 @@ export default function MobileHeader() {
     { name: "خانه", href: "/", icon: BiHome },
     { name: "درباره ما", href: "/about", icon: BsInfo },
     { name: "تماس با ما", href: "/contact", icon: BiPhone },
-    { name: "حساب کاربری", href: "/profile", icon: BiSolidUser },
   ];
 
   return (
     <header>
       {/* ===== TOP HEADER (fixed) ===== */}
-      <MobileTopHeader
-        isMenuOpen={isMenuOpen}
-        onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
-      />
+      <MobileTopHeader />
 
       {/* ===== OVERLAY & DRAWER ===== */}
       <MobileMenuDrawer
@@ -56,7 +52,11 @@ export default function MobileHeader() {
       />
 
       {/* ===== BOTTOM TAB BAR ===== */}
-      <MobileBottomNav navItems={navItems} />
+      <MobileBottomNav
+        navItems={navItems}
+        isMenuOpen={isMenuOpen}
+        onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
+      />
     </header>
   );
 }
