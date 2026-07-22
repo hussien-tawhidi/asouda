@@ -57,7 +57,7 @@ export default function MobileMenuDrawer({
         initial={{ x: "100%" }}
         animate={{ x: open ? "0%" : "100%" }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className='fixed top-0 bottom-0 right-0 z-9999 h-screen w-[85%] max-w-sm bg-bone-white/95 backdrop-blur-md shadow-2xl'
+        className='fixed inset-y-0 right-0 z-9999 w-[85%] max-w-sm bg-bone-white/95 backdrop-blur-md shadow-2xl flex flex-col'
         role='dialog'
         aria-modal='true'
         aria-label='منوی اصلی'>
