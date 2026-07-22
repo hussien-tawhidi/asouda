@@ -29,7 +29,6 @@ export default function MobileMenuDrawer({
 }: MobileDrawerProps) {
   const pathname = usePathname();
 
-  // Quick access links
   const quickLinks = [
     { name: "حساب کاربری", href: "/profile", icon: HiOutlineUser },
     { name: "علاقه‌مندی‌ها", href: "/wishlist", icon: PiHeartThin },
@@ -38,7 +37,7 @@ export default function MobileMenuDrawer({
 
   return (
     <>
-      {/* Backdrop with animation */}
+      {/* Backdrop */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -57,14 +56,14 @@ export default function MobileMenuDrawer({
         initial={{ x: "100%" }}
         animate={{ x: open ? "0%" : "100%" }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className='fixed inset-y-0 right-0 z-9999 w-[85%] max-w-sm bg-bone-white/95 backdrop-blur-md shadow-2xl flex flex-col'
+        className='fixed top-0 bottom-0 right-0 z-9999 h-[100dvh] w-[85%] max-w-sm bg-bone-white/95 backdrop-blur-md shadow-2xl'
         role='dialog'
         aria-modal='true'
         aria-label='منوی اصلی'>
-        <div className='flex h-screen flex-col'>
+        <div className='relative flex h-full flex-col'>
           {/* ===== HEADER ===== */}
           <div className='flex items-center justify-between border-b border-espresso-clay/20 px-5 py-4'>
-            <Link href={"/"} className='flex items-center gap-2.5'>
+            <Link href='/' className='flex items-center gap-2.5'>
               <div className='relative'>
                 <Image
                   src='/asouda-logo.png'
@@ -81,7 +80,6 @@ export default function MobileMenuDrawer({
                 </p>
               </div>
             </Link>
-
             <button
               onClick={onClose}
               className='group p-2 transition'
@@ -117,15 +115,14 @@ export default function MobileMenuDrawer({
             </div>
           </div>
 
-          {/* ===== CATEGORIES ===== */}
-          <nav className='flex-1 overflow-y-auto px-3 py-4'>
+          {/* ===== CATEGORIES (scrollable, with bottom padding for footer) ===== */}
+          <nav className='flex-1 overflow-y-auto px-3 py-4 pb-24'>
             <p className='mb-3 px-2 text-xs font-semibold uppercase tracking-wider'>
               دسته‌بندی‌ها
             </p>
             <ul className='space-y-1.5'>
               {categories.map((item) => {
                 const isActive = pathname === item.href;
-
                 return (
                   <li key={item.href}>
                     <Link
@@ -146,7 +143,6 @@ export default function MobileMenuDrawer({
                           className='h-full w-full object-cover'
                         />
                       </div>
-
                       <div className='flex flex-1 flex-col'>
                         <span
                           className={`font-medium text-sm ${
@@ -158,7 +154,6 @@ export default function MobileMenuDrawer({
                           {isActive ? "همین حالا ببینید" : "مشاهده محصولات"}
                         </span>
                       </div>
-
                       {isActive && (
                         <span className='h-2 w-2 rounded-full bg-espresso-clay' />
                       )}
@@ -169,8 +164,8 @@ export default function MobileMenuDrawer({
             </ul>
           </nav>
 
-          {/* ===== FOOTER ===== */}
-          <div className='border-t border-espresso-clay/20 bg-bone-white/50 px-5 py-4'>
+          {/* ===== FOOTER (sticky at bottom) ===== */}
+          <div className='absolute bottom-0 left-0 right-0 border-t border-espresso-clay/20 bg-bone-white/95 px-5 py-4 backdrop-blur-sm'>
             <div className='flex items-center justify-between'>
               {/* Social Links */}
               <div className='flex items-center gap-3'>
