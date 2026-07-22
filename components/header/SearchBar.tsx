@@ -121,7 +121,7 @@ export default function SearchBar() {
       {/* دکمه بازکننده */}
       <button
         onClick={openSearch}
-        className='p-2 rounded-full hover:bg-earth-brown/10 transition-colors duration-200'
+        className='rounded-full bg-espresso-clay/5 p-2.5 text-espresso-clay transition hover:bg-espresso-clay hover:text-bone-white flex items-center gap-1.5'
         aria-label='جستجو'>
         <BiSearch className='w-5 h-5' />
       </button>
