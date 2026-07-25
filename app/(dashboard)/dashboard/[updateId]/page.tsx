@@ -494,7 +494,7 @@ export default function ProductUpdatePage() {
           value={features}
           onChange={setFeatures}
           placeholder='ویژگی'
-          addLabel='افزودن ویژگی'
+          // addLabel='افزودن ویژگی'
         />
 
         {/* ----- Assembly ----- */}
