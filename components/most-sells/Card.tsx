@@ -20,6 +20,10 @@ export default function Card({
   hasDiscount,
   toggleLike,
 }: ProductCardProps) {
+  const imageSrc =
+    product.image[0] instanceof File
+      ? URL.createObjectURL(product.image[0])
+      : product.image[0];
   return (
     <div
       dir='rtl'
@@ -28,7 +32,7 @@ export default function Card({
       <Link href={product._id} className='relative '>
         <div className='relative overflow-hidden md:rounded-3xl bg-white aspect-square'>
           <Image
-            src={product.image[0]}
+            src={imageSrc}
             alt={product.name}
             width={400}
             height={400}
@@ -88,10 +92,9 @@ export default function Card({
               </span>
             </h2>
           </div>
-            <button className='rounded-xl border text-nowrap border-espresso-clay md:flex hidden px-5 py-2 text-sm font-semibold text-espresso-clay transition hover:bg-espresso-clay hover:text-white'>
-              ثبت سفارش
-            </button>
-         
+          <button className='rounded-xl border text-nowrap border-espresso-clay md:flex hidden px-5 py-2 text-sm font-semibold text-espresso-clay transition hover:bg-espresso-clay hover:text-white'>
+            ثبت سفارش
+          </button>
         </div>
       </div>
     </div>

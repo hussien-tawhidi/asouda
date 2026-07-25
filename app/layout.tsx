@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { iranYekan } from "@/lib/font";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "./styles/home-loader.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://asouda.com"),
@@ -87,12 +89,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+ 
   return (
     <html
       lang='fa'
       dir='rtl'
       className={`${iranYekan.variable} h-full antialiased`}>
-      <body className='min-h-full flex flex-col'>{children}</body>
+      <body className='min-h-full flex flex-col'>
+        {children}
+
+        <Toaster />
+      </body>
     </html>
   );
 }

@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/db";
+import { saveUploadedFiles } from "@/lib/image";
 import Product from "@/model/Product";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -8,7 +9,7 @@ export async function POST(req: NextRequest) {
 
     const formData = await req.formData();
 
-    // Helper to safely parse JSON strings
+    // Parse JSON arrays
     const parseJSON = (value: string | null) => {
       if (!value) return [];
       try {
@@ -18,17 +19,13 @@ export async function POST(req: NextRequest) {
       }
     };
 
-    // Extract simple fields with defaults
+    // --- Extract simple fields ---
     const _id = (formData.get("_id") as string) || undefined;
     const name = (formData.get("name") as string) || "";
     const price = Number(formData.get("price")) || 0;
     const category = (formData.get("category") as string) || "";
     const size = (formData.get("size") as string) || "";
     const material = (formData.get("material") as string) || "";
-    const rating = Number(formData.get("rating")) || 5;
-    const reviews = Number(formData.get("reviews")) || 0;
-    const sold = Number(formData.get("sold")) || 0;
-    const stock = Number(formData.get("stock")) || 0;
     const discount = Number(formData.get("discount")) || 0;
     const brand = (formData.get("brand") as string) || "";
     const description = (formData.get("description") as string) || "";
@@ -40,12 +37,30 @@ export async function POST(req: NextRequest) {
     const assemblyRequired = formData.get("assemblyRequired") === "true";
     const warranty = (formData.get("warranty") as string) || "";
 
-    // Parse JSON arrays
-    const image = parseJSON(formData.get("image") as string);
+    // --- Parse JSON arrays ---
     const colors = parseJSON(formData.get("colors") as string);
     const features = parseJSON(formData.get("features") as string);
 
-    // Build the product object
+    // --- Handle image uploads ---
+    let imageUrls: string[] = [];
+
+    // Get all file entries under "image" or "images"
+    const imageEntries = formData.getAll("image"); // or "images"
+    console.log("📸 Image entries:", imageEntries);
+
+    if (imageEntries.length > 0) {
+      // Filter to only File objects
+      const files = imageEntries.filter(
+        (entry): entry is File => entry instanceof File,
+      );
+
+      if (files.length > 0) {
+        imageUrls = await saveUploadedFiles(files, `products/${category}/${name}`);
+        console.log("✅ Saved images:", imageUrls);
+      }
+    }
+
+    // Build product object
     const productData = {
       _id,
       name,
@@ -53,10 +68,10 @@ export async function POST(req: NextRequest) {
       category,
       size,
       material,
-      rating,
-      reviews,
-      sold,
-      stock,
+      rating: 5,
+      reviews: 5,
+      sold: 10,
+      stock: 100,
       discount,
       brand,
       description,
@@ -67,12 +82,12 @@ export async function POST(req: NextRequest) {
       frameType,
       assemblyRequired,
       warranty,
-      image,
+      image: imageUrls, // array of public URLs
       colors,
       features,
     };
 
-    // If _id is provided, update; otherwise create new
+    // Create or update
     let product;
     if (_id) {
       product = await Product.findByIdAndUpdate(_id, productData, {
@@ -89,8 +104,6 @@ export async function POST(req: NextRequest) {
       product = new Product(productData);
       await product.save();
     }
-
-    console.log("✅ Product saved:", product._id);
 
     return NextResponse.json(
       { message: "Product saved successfully", product },

@@ -18,18 +18,15 @@ export interface MostSellProductType {
   _id: string;
   name: string;
   price: number;
-  image: string[];
+  image: File[] | string[];
   category: string;
-
   size: string;
   material: string;
 
   colors: ProductColor[];
 
-  rating: number;
-  reviews: number;
-  sold: number;
-  stock: number;
+  rating?: number;
+  reviews?: number;
   discount: number;
 
   brand?: string;
@@ -42,9 +39,16 @@ export interface MostSellProductType {
   frameType?: string;
   assemblyRequired?: boolean;
   warranty?: string;
-
+  sold?: number;
   comment?: {
     comment: string;
     userId: string;
   }[];
+}
+
+export interface MultipleImageUploadType {
+  images: File[];
+  setImages: (files: File[]) => void;
+  maxImages?: number;
+  required?: boolean;
 }

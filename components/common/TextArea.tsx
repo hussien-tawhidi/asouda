@@ -25,7 +25,7 @@ export default function Textarea({
         id={id}
         {...props}
         className={`
-          "min-h-32 w-full resize-none rounded-xl border bg-white px-4 py-3 text-sm transition-all duration-200",
+          "min-h-32 w-full resize-none rounded-xl border px-4 py-3 text-sm transition-all duration-200",
           "placeholder:text-gray-400",
           "focus:border-espresso-clay focus:outline-none focus:ring-4 focus:ring-espresso-clay/10",
           ${error ? "border-red-400" : "border-gray-300"},

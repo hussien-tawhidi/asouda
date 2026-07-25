@@ -68,12 +68,12 @@ export default function DesktopHeader() {
 
       {/* Navigation */}
       <nav className='mx-auto flex h-14 max-w-7xl items-center justify-center px-6'>
-        <ul className='flex items-center gap-6 text-sm font-medium text-espresso-clay'>
+        <ul className='flex items-center gap-4 text-sm font-medium text-espresso-clay'>
           {categories.map((item, index) => (
-            <li key={item.href} className='flex items-center gap-6'>
+            <li key={item.href} className='flex items-center gap-3'>
               <Link
                 href={item.href}
-                className={`relative py-2 transition-colors duration-300
+                className={`relative text-xs py-2 transition-colors duration-300
                   after:absolute after:bottom-0 after:left-0 after:h-0.5
                   after:w-0 after:bg-earth-brown after:transition-all
                   after:duration-300 hover:text-earth-brown hover:after:w-full

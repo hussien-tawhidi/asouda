@@ -1,34 +1,33 @@
 "use client";
 
 import { MostSellProductType } from "@/types";
-import { useState,  FormEvent, useEffect } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import axios from "axios";
 import Textarea from "@/components/common/TextArea";
 import Input from "@/components/common/Input";
 import AddFeatures from "./AddFeatures";
 import AddColor from "./AddColor";
-import AddImage from "./AddImage";
+import ImageUploadInput from "./ImageUpload";
+import Select from "@/components/common/CustomeSelect";
+import { categories, mdfColors } from "@/constant/home-data";
+import toast from "react-hot-toast";
 
 type FormErrors = Partial<Record<keyof MostSellProductType, string>>;
-
-export default function ProductForm() {
+type MDFColor = {
+  name: string;
+  value: string | null;
+};
+export default function CreateForm() {
   // ---------- Individual states ----------
-  const [_id, set_id] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
-  const [image, setImage] = useState<string[]>([""]);
+  const [image, setImage] = useState<File[]>([]);
   const [category, setCategory] = useState("");
   const [size, setSize] = useState("");
-  const [material, setMaterial] = useState("");
-  const [colors, setColors] = useState<{ name: string; value: string }[]>([
-    { name: "", value: "#000000" },
-  ]);
-  const [rating, setRating] = useState(5);
-  const [reviews, setReviews] = useState(0);
-  const [sold, setSold] = useState(0);
-  const [stock, setStock] = useState(0);
+  const [material, setMaterial] = useState("ام دی اف");
+  const [colors, setColors] = useState<MDFColor[]>(mdfColors);
   const [discount, setDiscount] = useState(0);
-  const [brand, setBrand] = useState("");
+  const [brand, setBrand] = useState("Asouda");
   const [description, setDescription] = useState("");
   const [dimensions, setDimensions] = useState("");
   const [weight, setWeight] = useState("");
@@ -37,7 +36,7 @@ export default function ProductForm() {
   const [bedSize, setBedSize] = useState("");
   const [frameType, setFrameType] = useState("");
   const [assemblyRequired, setAssemblyRequired] = useState(false);
-  const [warranty, setWarranty] = useState("");
+  const [warranty, setWarranty] = useState("4 سال");
 
   // ---------- UI states ----------
   const [errors, setErrors] = useState<FormErrors>({});
@@ -54,7 +53,9 @@ export default function ProductForm() {
 
   // ---------- Handlers for simple fields ----------
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
@@ -67,10 +68,6 @@ export default function ProductForm() {
       category: setCategory,
       size: setSize,
       material: setMaterial,
-      rating: setRating,
-      reviews: setReviews,
-      sold: setSold,
-      stock: setStock,
       discount: setDiscount,
       brand: setBrand,
       description: setDescription,
@@ -80,7 +77,6 @@ export default function ProductForm() {
       bedSize: setBedSize,
       frameType: setFrameType,
       warranty: setWarranty,
-      _id: set_id,
     };
 
     const setter = setters[name];
@@ -108,7 +104,6 @@ export default function ProductForm() {
     if (!name.trim()) newErrors.name = "نام محصول الزامی است";
     if (price <= 0) newErrors.price = "قیمت باید بزرگتر از صفر باشد";
     if (!category.trim()) newErrors.category = "دسته‌بندی الزامی است";
-    if (stock < 0) newErrors.stock = "موجودی نمی‌تواند منفی باشد";
     if (discount < 0 || discount > 100)
       newErrors.discount = "تخفیف باید بین ۰ تا ۱۰۰ باشد";
     setErrors(newErrors);
@@ -124,51 +119,18 @@ export default function ProductForm() {
     setSubmitSuccess(false);
 
     try {
-      // Build product object for reference (optional)
-      const productData: MostSellProductType = {
-        _id,
-        name,
-        price,
-        image,
-        category,
-        size,
-        material,
-        colors,
-        rating,
-        reviews,
-        sold,
-        stock,
-        discount,
-        brand,
-        description,
-        dimensions,
-        weight,
-        careInstructions,
-        features,
-        bedSize,
-        frameType,
-        assemblyRequired,
-        warranty,
-      };
-
       // Create FormData
       const formData = new FormData();
       // Append simple fields
-      formData.append("_id", _id);
       formData.append("name", name);
       formData.append("price", String(price));
       formData.append("category", category);
       formData.append("size", size);
       formData.append("material", material);
-      formData.append("rating", String(rating));
-      formData.append("reviews", String(reviews));
-      formData.append("sold", String(sold));
-      formData.append("stock", String(stock));
       formData.append("discount", String(discount));
       formData.append("brand", brand);
       formData.append("description", description);
       formData.append("dimensions", dimensions);
-      formData.append("weight", weight);
       formData.append("careInstructions", careInstructions);
       formData.append("bedSize", bedSize);
       formData.append("frameType", frameType);
@@ -176,7 +138,9 @@ export default function ProductForm() {
       formData.append("warranty", warranty);
 
       // Append arrays as JSON strings (or iterate)
-      formData.append("image", JSON.stringify(image));
+      image.forEach((file) => {
+        formData.append("image", file);
+      });
       formData.append("colors", JSON.stringify(colors));
       formData.append("features", JSON.stringify(features));
 
@@ -186,42 +150,13 @@ export default function ProductForm() {
           "Content-Type": "multipart/form-data",
         },
       });
-
-      console.log("Product submitted successfully:", productData);
-      setSubmitSuccess(true);
-      resetForm();
+      toast.success("محصول به موفقیت وارد شد");
     } catch (error) {
+      toast.error("خطای رخ داده است" + error);
       console.error("Error submitting product:", error);
     } finally {
       setIsSubmitting(false);
     }
-  };
-  // ---------- Reset form ----------
-  const resetForm = () => {
-    // set_id(defaultFields._id);
-    // setName(defaultFields.name);
-    // setPrice(defaultFields.price);
-    // setImage(defaultFields.image);
-    // setCategory(defaultFields.category);
-    // setSize(defaultFields.size);
-    // setMaterial(defaultFields.material);
-    // setColors(defaultFields.colors);
-    // setRating(defaultFields.rating);
-    // setReviews(defaultFields.reviews);
-    // setSold(defaultFields.sold);
-    // setStock(defaultFields.stock);
-    // setDiscount(defaultFields.discount);
-    // setBrand(defaultFields.brand);
-    // setDescription(defaultFields.description);
-    // setDimensions(defaultFields.dimensions);
-    // setWeight(defaultFields.weight);
-    // setCareInstructions(defaultFields.careInstructions);
-    // setFeatures(defaultFields.features);
-    // setBedSize(defaultFields.bedSize);
-    // setFrameType(defaultFields.frameType);
-    // setAssemblyRequired(defaultFields.assemblyRequired);
-    // setWarranty(defaultFields.warranty);
-    // setErrors({});
   };
 
   // Auto‑hide success message
@@ -233,19 +168,8 @@ export default function ProductForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className='mx-auto max-w-6xl space-y-8 rounded-3xl bg-white p-6 shadow-lg md:p-10'
+      className='space-y-8 rounded-3xl my-10 p-6 shadow-lg md:p-10'
       dir='rtl'>
-      <div className='flex items-center justify-between border-b border-gray-200 pb-4'>
-        <h2 className='text-2xl font-bold text-espresso-clay'>
-          ثبت محصول جدید
-        </h2>
-        {submitSuccess && (
-          <span className='rounded-full bg-green-100 px-4 py-1 text-sm font-medium text-green-700'>
-            ✓ محصول با موفقیت ثبت شد
-          </span>
-        )}
-      </div>
-
       {/* ----- SECTION: General ----- */}
       <section>
         <h3 className='mb-4 text-lg font-semibold text-gray-700'>
@@ -259,15 +183,21 @@ export default function ProductForm() {
             onChange={handleChange}
             error={errors.name}
             required
+            placeHolderText={"نام محصول را وارد کنید ..."}
           />
-          <Input
+          <Select
             label='دسته‌بندی'
             name='category'
             value={category}
             onChange={handleChange}
+            options={categories.slice(1).map((item) => ({
+              label: item.name,
+              value: item.slug,
+            }))}
             error={errors.category}
             required
           />
+
           <Input
             type='number'
             label='قیمت (تومان)'
@@ -293,15 +223,6 @@ export default function ProductForm() {
             name='brand'
             value={brand}
             onChange={handleChange}
-          />
-          <Input
-            type='number'
-            label='موجودی'
-            name='stock'
-            value={stock}
-            onChange={handleChange}
-            error={errors.stock}
-            min='0'
           />
         </div>
       </section>
@@ -352,43 +273,20 @@ export default function ProductForm() {
             value={warranty}
             onChange={handleChange}
           />
+          {/* ----- SECTION: Colors ----- */}
         </div>
       </section>
-
-      {/* ----- SECTION: Ratings & Stats ----- */}
-      <section>
-        <h3 className='mb-4 text-lg font-semibold text-gray-700'>
-          آمار و امتیازات
-        </h3>
-        <div className='grid gap-5 md:grid-cols-3'>
-          <Input
-            type='number'
-            label='امتیاز (۱ تا ۵)'
-            name='rating'
-            value={rating}
-            onChange={handleChange}
-            min='0'
-            max='5'
-            step='0.1'
-          />
-          <Input
-            type='number'
-            label='تعداد نظرات'
-            name='reviews'
-            value={reviews}
-            onChange={handleChange}
-            min='0'
-          />
-          <Input
-            type='number'
-            label='تعداد فروش'
-            name='sold'
-            value={sold}
-            onChange={handleChange}
-            min='0'
-          />
-        </div>
-      </section>
+      <div>
+        <AddColor
+          label='رنگ‌ها'
+          // @ts-expect-error this is type error not any security error
+          value={colors}
+          onChange={setColors}
+          addLabel='افزودن رنگ'
+          minItems={1}
+          defaultColor='#000000'
+        />
+      </div>
 
       {/* ----- SECTION: Long Text ----- */}
       <section>
@@ -414,33 +312,19 @@ export default function ProductForm() {
       </section>
 
       {/* ----- SECTION: Images ----- */}
-      <AddImage
-        value={image}
-        onChange={setImage}
-        minItems={1}
-        addLabel='افزودن تصویر'
-      />
+      <ImageUploadInput images={image} setImages={setImage} />
 
-      {/* ----- SECTION: Colors ----- */}
-      <AddColor
-        label='رنگ‌ها'
-        value={colors}
-        onChange={setColors}
-        addLabel='افزودن رنگ'
-        minItems={1}
-        defaultColor='#000000'
-      />
       {/* ----- SECTION: Features ----- */}
       <AddFeatures
         label='ویژگی‌ها'
         value={features}
         onChange={setFeatures}
         placeholder='ویژگی'
-        addLabel='افزودن ویژگی'
+       
       />
 
       {/* ----- SECTION: Boolean (Assembly) ----- */}
-      <div className='flex items-center gap-3 rounded-lg bg-gray-50 p-4'>
+      <div className='flex items-center gap-3 p-4'>
         <input
           type='checkbox'
           id='assemblyRequired'
@@ -467,12 +351,6 @@ export default function ProductForm() {
           ) : (
             "ثبت محصول"
           )}
-        </button>
-        <button
-          type='button'
-          onClick={resetForm}
-          className='rounded-lg px-4 py-2 text-sm text-gray-500 transition hover:bg-gray-100'>
-          reset
         </button>
       </div>
     </form>

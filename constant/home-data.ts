@@ -42,6 +42,14 @@ export const whyTrustUs = [
   },
 ];
 
+export const categoryOptions = [
+  { label: "سرویس خواب", value: "bedroom-set" },
+  { label: "تخت خواب", value: "bed" },
+  { label: "میز آرایش", value: "dresser" },
+  { label: "پاتختی", value: "nightstand" },
+  { label: "کمد لباس", value: "wardrobe" },
+];
+
 export const categories = [
   {
     name: "خانه",
@@ -84,6 +92,12 @@ export const categories = [
     slug: "classic",
     image: "/images/categories/kingdom.jpg",
     href: "/category/classic-bedroom-set",
+  },
+  {
+    name: "میزد ارایش",
+    slug: "beauty-desk",
+    image: "/images/categories/kingdom.jpg",
+    href: "/category/beauty-desk",
   },
 ];
 
@@ -504,4 +518,42 @@ export const aboutUsTestimonials = [
     avatar: "/avatar-3.jpg",
     rating: 5,
   },
+];
+
+// colors
+export const mdfColors = [
+  { name: "سفید برفی", value: "#FFFFFF" },
+  { name: "سفید صدفی", value: "#F8F8F4" },
+  { name: "استخوانی", value: "#F3EFE6" },
+  { name: "شیری", value: "#F7F3EB" },
+  { name: "کرم روشن", value: "#F4E7D0" },
+
+  { name: "طوسی روشن", value: "#D9D9D9" },
+  { name: "طوسی فیلی", value: "#B7B7B7" },
+  { name: "طوسی سنگی", value: "#8F8F8F" },
+  { name: "دودی", value: "#666666" },
+  { name: "نوک مدادی", value: "#4B4B4B" },
+  { name: "آنتراسیت", value: "#2C2C2C" },
+
+  { name: "گردویی", value: "#6F4E37" },
+  { name: "گردویی تیره", value: "#4E342E" },
+  { name: "فندقی", value: "#A47149" },
+  { name: "بلوط روشن", value: "#C89B63" },
+  { name: "بلوط تیره", value: "#8B5A2B" },
+  { name: "راش", value: "#D9B382" },
+  { name: "افرا", value: "#E7C9A9" },
+  { name: "ماهاگونی", value: "#7A2E2E" },
+  { name: "ونگه", value: "#2D211B" },
+
+  { name: "سبز زیتونی", value: "#6B7A3E" },
+  { name: "سبز سدری", value: "#9DAA8B" },
+  { name: "آبی اقیانوسی", value: "#2E5D87" },
+  { name: "سرمه‌ای", value: "#1E2D4F" },
+  { name: "بژ", value: "#D9C6A5" },
+  { name: "کاپوچینویی", value: "#B08A6A" },
+
+  { name: "سفید هایگلاس", value: "#FAFAFA" },
+  { name: "مشکی هایگلاس", value: "#101010" },
+  { name: "طوسی هایگلاس", value: "#A6A6A6" },
+  { name: "مشکی مات", value: "#1E1E1E" },
 ];
