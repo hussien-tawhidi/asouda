@@ -12,6 +12,7 @@ import ProductSpecifications from "@/components/single-product/ProductSpecificat
 import ProductSlider from "@/components/common/ProductSlider";
 
 import { MostSellProductType } from "@/types";
+import Loader from "@/components/common/Loader";
 
 export default function ProductDetailsPage() {
   const { productId } = useParams<{ productId: string }>();
@@ -45,7 +46,7 @@ export default function ProductDetailsPage() {
   if (loading) {
     return (
       <div className='flex h-[60vh] items-center justify-center'>
-        <Loader2 className='h-10 w-10 animate-spin' />
+        <Loader />
       </div>
     );
   }
@@ -65,7 +66,7 @@ export default function ProductDetailsPage() {
         <span className='text-espresso-clay'>{product.name}</span>
       </nav>
 
-      <div className='grid gap-10 lg:grid-cols-2'>
+      <div className='grid md:gap-10 lg:grid-cols-2'>
         <ProductGallery
           images={product.image.map((img) =>
             typeof img === "string" ? img : URL.createObjectURL(img),

@@ -36,7 +36,7 @@ export default function ProductSlider({
 
   return (
     <section className='py-6 md:py-12'>
-      <div className='container mx-auto px-0 lg:px-6'>
+      <div className='container mx-auto px-2 lg:px-6'>
         {/* Header */}
         <div className='flex justify-between md:mb-12 mb-6 gap-4 px-4 lg:px-0'>
           <div className='space-y-2'>
@@ -81,7 +81,7 @@ export default function ProductSlider({
                 spaceBetween: 12,
               },
               1024: {
-                slidesPerView: 4,
+                slidesPerView: 5,
                 spaceBetween: 16,
               },
             }}>

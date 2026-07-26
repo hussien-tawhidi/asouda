@@ -36,7 +36,7 @@ export default function CategoryPage() {
 
         const { data } = await axios.get("/api/products", {
           params: {
-            category: category.slug,
+            category: category.name,
           },
         });
 
@@ -87,8 +87,17 @@ export default function CategoryPage() {
 
   if (loading) {
     return (
-      <div className='container mx-auto py-20 text-center'>
-        در حال بارگذاری محصولات...
+      <div className='flex items-center justify-center py-20 w-full h-full'>
+        <div className='loading'>
+          <svg width='64px' height='48px'>
+            <polyline
+              points='0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24'
+              id='back'></polyline>
+            <polyline
+              points='0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24'
+              id='front'></polyline>
+          </svg>
+        </div>
       </div>
     );
   }

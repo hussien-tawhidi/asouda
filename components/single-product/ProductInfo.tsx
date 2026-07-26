@@ -5,13 +5,13 @@ import { MostSellProductType } from "@/types";
 import {
   Check,
   Heart,
-  Info,
   Share2,
   Star,
   Truck,
   ShieldCheck,
   PackageCheck,
 } from "lucide-react";
+import PriceCard from "./PriceCard";
 
 interface ProductInfoProps {
   product: MostSellProductType;
@@ -29,29 +29,44 @@ export default function ProductInfo({ product }: ProductInfoProps) {
   return (
     <div className='md:space-y-8 space-y-5'>
       {/* Header */}
-      <div className='flex md:items-start justify-between gap-4'>
-        <div>
-          <span className='inline-flex rounded-full bg-espresso-clay/10 px-3 py-1 md:text-xs text-[9px] font-medium text-espresso-clay'>
-            {product.category}
-          </span>
+      <div className='flex flex-col md:flex-row md:items-start justify-between gap-4'>
+        <div className='space-y-2'>
+          {/* Category + Discount Badge */}
+          <div className='flex flex-wrap items-center gap-5 md:justify-start mb-5 justify-between'>
+            <span className='inline-flex rounded-full bg-espresso-clay/10 px-3 py-1 text-[9px] font-medium text-espresso-clay md:text-xs'>
+              {product.category}
+            </span>
 
-          <h1 className='mt-3 md:text-3xl text-lg font-bold leading-relaxed text-espresso-clay'>
+            {hasDiscount && (
+              <div className='group relative inline-flex items-center'>
+                {/* Glow effect */}
+                <div className='absolute -inset-1 rounded-full bg-linear-to-r from-red-500 to-orange-400 opacity-70 blur-sm transition duration-300 group-hover:opacity-100' />
+                {/* Badge content */}
+                <div className='relative flex items-center gap-1 rounded-full bg-linear-to-r from-red-500 to-orange-400 px-3 py-1 md:text-xs text-[10px] font-bold text-white shadow-lg'>
+                  <span className='md:text-base text-xs'>🔥</span>
+                  {product.discount}% تخفیف ویژه
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Product name */}
+          <h1 className='text-lg font-bold leading-relaxed text-espresso-clay md:text-3xl'>
             {product.name}
           </h1>
 
           {product.brand && (
-            <p className='md:mt-2 md:text-sm text-[10px] text-espresso-clay/70'>
-              برند:
-              <span className='mr-1 font-semibold'>{product.brand}</span>
+            <p className='text-[10px] text-espresso-clay/70 md:text-sm'>
+              برند: <span className='mr-1 font-semibold'>{product.brand}</span>
             </p>
           )}
         </div>
 
-        <div className='flex gap-2'>
+        {/* Action buttons (unchanged) */}
+        <div className='md:flex hidden gap-2'>
           <button className='rounded-xl border border-gray-200 p-2.5 transition-all hover:border-espresso-clay hover:bg-espresso-clay/5 hover:text-espresso-clay'>
             <Heart size={18} />
           </button>
-
           <button className='rounded-xl border border-gray-200 p-2.5 transition-all hover:border-espresso-clay hover:bg-espresso-clay/5 hover:text-espresso-clay'>
             <Share2 size={18} />
           </button>
@@ -129,31 +144,12 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       )}
 
       {/* Price */}
-      <div className='bg-espresso-clay text-bone-white rounded mb-3'>
-        <div className='rounded-3xl p-6 flex justify-between shadow-lg'>
-          {hasDiscount && (
-            <div className='mb-3 flex md:flex-row flex-col items-center gap-3'>
-              <span className='rounded-full bg-warm-putty text-espresso-clay md:text-sm text-[9px] md:px-3 px-1.5 py-1 font-bold'>
-                %{product.discount} تخفیف
-              </span>
-
-              <span className='line-through opacity-80'>
-                {product.price.toLocaleString("fa-IR")}
-              </span>
-            </div>
-          )}
-
-          <div className='md:text-4xl text-lg font-bold flex gap-2'>
-            {discountedPrice.toLocaleString("fa-IR")}
-            <span className='mt-1 text-sm opacity-80'>تومان</span>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <button className='flex w-full items-center justify-center gap-3 border-t border-bone-white/50 py-4 text-lg font-bold text-white transition-all hover:-translate-y-0.5 hover:shadow-xl active:scale-[0.98]'>
-          ثبت سفارش
-        </button>
-      </div>
+      <PriceCard
+        price={product.price}
+        discount={product.discount}
+        phone='+98 919 389 7119'
+        whatsapp='+989030931288'
+      />
 
       {/* Services */}
       <div className='grid md:grid-cols-4 grid-cols-2 gap-3 '>

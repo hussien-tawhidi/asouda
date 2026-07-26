@@ -327,7 +327,7 @@ export default function ProductUpdatePage() {
               onChange={handleChange}
               options={categories.slice(1).map((item) => ({
                 label: item.name,
-                value: item.slug,
+                value: item.name,
               }))}
               error={errors.category}
               required

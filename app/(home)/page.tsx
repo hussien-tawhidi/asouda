@@ -1,11 +1,18 @@
+"use client";
+
 import HomeBanner from "@/components/common/HomeBanner";
+import Loader from "@/components/common/Loader";
 import ProductSlider from "@/components/common/ProductSlider";
 import FeaturesSection from "@/components/Features";
 import { HeroCollage } from "@/components/hero/DesktopHero";
 import MobileHero from "@/components/hero/MobileHero";
 import Category from "@/components/home-cate/Category";
 import HomeAboutSection from "@/components/HomeAboutSection";
-import { mostSellsProduct } from "@/constant/home-data";
+import { MostSellProductType } from "@/types";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+
 const banners = [
   {
     image: "/banners/1.png",
@@ -17,6 +24,8 @@ const banners = [
   },
 ];
 export default function Home() {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [products, setProducts] = useState<MostSellProductType[]>([]);
   const images = [
     "/images/hero/1.jpg",
     "/images/hero/2.jpg",
@@ -26,9 +35,35 @@ export default function Home() {
     "/images/hero/6.jpg",
     "/images/hero/7.jpg",
   ];
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+
+        const { data } = await axios.get("/api/products/home");
+        // console.log("🚀 ~ fetchProducts ~ data:", data.data)
+
+        // Change this if your API returns a different shape
+        setProducts(data.data);
+      } catch (err) {
+        console.error(err);
+        toast.error("خطای دریافت محصول");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+  if (loading || !products) {
+    <div className='flex items-center justify-center py-10'>
+      <Loader />
+    </div>;
+  }
   return (
     <div className='w-full overflow-hidden pb-20'>
-      <MobileHero images={images}/>
+      <MobileHero images={images} />
       <HeroCollage
         title='خوابی رویایی با آسوده'
         subtitle='با بهترین متریال‌ها و طراحی‌های مدرن، آرامش را به خانه‌تان بیاورید.'
@@ -51,21 +86,29 @@ export default function Home() {
         <ProductSlider
           title='محصولات ویژه'
           description='جدیدترین و محبوب‌ترین محصولات با بهترین کیفیت'
-          products={mostSellsProduct}
+          products={products.filter(
+            (item) => item.category === "سرویس خواب دو نفره",
+          )}
           exploreTitle='مشاهده همه محصولات'
         />
       </div>
       <ProductSlider
         title='پرفروش‌ترین سرویس‌ها'
         description='جدیدترین و محبوب‌ترین محصولات با بهترین کیفیت'
-        products={mostSellsProduct}
+        products={products.filter((item) =>
+          [
+            "سرویس خواب مدرن",
+            "سرویس خواب یک نفره",
+            "سرویس خواب کودک / نوجوان",
+          ].includes(item.category),
+        )}
         exploreTitle='مشاهده همه محصولات'
       />
       <hr className='border-espresso-clay/30 my-3 w-[90%] mx-auto' />
       <ProductSlider
         title='شیک ترین میز ارایشی'
         description='محصولات تازه اضافه شده'
-        products={mostSellsProduct}
+        products={products.filter((item) => item.category === "میزد ارایش")}
         exploreTitle='مشاهده بیشتر'
       />
       <Category />
