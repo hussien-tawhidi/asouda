@@ -1,6 +1,6 @@
 "use client";
 
-import { BsInstagram, BsTelegram, BsWhatsapp } from "react-icons/bs";
+import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 import { BiInfoCircle, BiPhone } from "react-icons/bi";
 import Link from "next/link";
 

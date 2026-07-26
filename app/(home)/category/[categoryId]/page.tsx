@@ -51,7 +51,7 @@ export default function CategoryPage() {
     };
 
     fetchProducts();
-  }, [category.slug]);
+  }, [category.name]);
 
   const filteredProducts = useMemo(() => {
     switch (sortBy) {

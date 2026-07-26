@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
 import axios from "axios";
-import { ChevronLeft, Info, Loader2 } from "lucide-react";
+import { ChevronLeft, Info } from "lucide-react";
 
-import ProductGallery from "@/components/single-product/ProductGallery";
-import ProductInfo from "@/components/single-product/ProductInfo";
+import ProductGallery from "@/components/single-product/images/ProductGallery";
+import ProductInfo from "@/components/single-product/info/ProductInfo";
 import ProductSpecifications from "@/components/single-product/ProductSpecifications";
 import ProductSlider from "@/components/common/ProductSlider";
 
@@ -28,10 +28,15 @@ export default function ProductDetailsPage() {
 
     const fetchProduct = async () => {
       try {
-        const { data } = await axios.get(`/api/products/${productId}`);
-
-        setProduct(data.product);
-        setRelatedProducts(data.relatedProducts ?? []);
+        const fetchData = await axios.get(`/api/products/${productId}`);
+        const { data } = await axios.get("/api/products", {
+          params: {
+            category: product?.category,
+          },
+        });
+        console.log("🚀 ~ fetchProduct ~ fetchData:", data);
+        setProduct(fetchData.data.product);
+        setRelatedProducts(data.products);
       } catch (error) {
         console.error(error);
         notFound();
@@ -41,7 +46,7 @@ export default function ProductDetailsPage() {
     };
 
     fetchProduct();
-  }, [productId]);
+  }, [productId, product?.category]);
 
   if (loading) {
     return (
@@ -95,7 +100,9 @@ export default function ProductDetailsPage() {
         </p>
       </section>
 
-      <ProductSlider products={relatedProducts} title='محصولات مشابه' />
+      {relatedProducts && (
+        <ProductSlider products={relatedProducts} title='محصولات مشابه' />
+      )}
     </div>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { BiCloset } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
 import { FaWhatsapp, FaPhone } from "react-icons/fa";
 

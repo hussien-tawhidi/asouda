@@ -70,8 +70,10 @@ export async function GET(req: NextRequest) {
     await connectDB();
 
     const { searchParams } = new URL(req.url);
+    console.log("🚀 ~ GET ~ searchParams:", searchParams)
 
     const category = searchParams.get("category");
+    console.log("🚀 ~ GET ~ category:", category)
     const search = searchParams.get("search");
     const sort = searchParams.get("sort");
 
