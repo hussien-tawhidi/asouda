@@ -64,28 +64,75 @@ export async function DELETE(req: NextRequest) {
     );
   }
 }
-export async function GET() {
+
+export async function GET(req: NextRequest) {
   try {
     await connectDB();
 
-    const products = await Product.find().sort({ createdAt: -1 });
+    const { searchParams } = new URL(req.url);
 
-    return NextResponse.json(
-      {
-        success: true,
-        products,
-      },
-      { status: 200 },
-    );
+    const category = searchParams.get("category");
+    const search = searchParams.get("search");
+    const sort = searchParams.get("sort");
+
+    const query: Record<string, unknown> = {};
+
+    if (category) {
+      query.category = category;
+    }
+
+    if (search) {
+      query.name = {
+        $regex: search,
+        $options: "i",
+      };
+    }
+
+    let mongoQuery = Product.find(query);
+
+    switch (sort) {
+      case "cheap":
+        mongoQuery = mongoQuery.sort({ price: 1 });
+        break;
+
+      case "expensive":
+        mongoQuery = mongoQuery.sort({ price: -1 });
+        break;
+
+      case "discount":
+        mongoQuery = mongoQuery.sort({ discount: -1 });
+        break;
+
+      case "popular":
+        mongoQuery = mongoQuery.sort({ rating: -1 });
+        break;
+
+      case "newest":
+        mongoQuery = mongoQuery.sort({ createdAt: -1 });
+        break;
+
+      default:
+        mongoQuery = mongoQuery.sort({ createdAt: -1 });
+    }
+
+    const products = await mongoQuery.lean();
+
+    return NextResponse.json({
+      success: true,
+      count: products.length,
+      products,
+    });
   } catch (error) {
-    console.error("Get Products Error:", error);
+    console.error(error);
 
     return NextResponse.json(
       {
         success: false,
         message: "Failed to fetch products.",
       },
-      { status: 500 },
+      {
+        status: 500,
+      },
     );
   }
 }

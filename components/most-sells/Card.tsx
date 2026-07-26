@@ -36,7 +36,7 @@ export default function Card({
             alt={product.name}
             width={400}
             height={400}
-            className='object-cover h-full w-auto transition duration-500 group-hover:scale-105'
+            className='object-cover h-full w-full transition duration-500 group-hover:scale-105'
           />
 
           {/* Wishlist */}

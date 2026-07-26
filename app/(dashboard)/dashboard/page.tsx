@@ -10,6 +10,8 @@ import {
   List,
   BarChart3,
   Settings,
+  ArrowLeft,
+  StoreIcon,
 } from "lucide-react";
 import AdminQuickAction from "@/components/admin/AdminQuickAction";
 import AdminStatCard from "@/components/admin/AdminStatAction";
@@ -60,12 +62,20 @@ export default function DashboardHomePage() {
             امروز چه کاری می‌خواهید انجام دهید؟
           </p>
         </div>
-        <Link
-          href='/dashboard/create-product'
-          className='flex items-center gap-2 rounded-xl bg-espresso-clay px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:opacity-90 hover:shadow-lg'>
-          <PlusCircle size={18} />
-          ثبت محصول جدید
-        </Link>
+        <div className='flex items-center gap-3'>
+          <Link
+            href='/'
+            className='flex items-center gap-2 rounded-xl border border-espresso-clay/20 px-5 py-2.5 text-sm font-semibold shadow-md transition hover:opacity-90 hover:shadow-lg'>
+            <StoreIcon size={18} />
+            صفحه فروشگاه
+          </Link>
+          <Link
+            href='/dashboard/create-product'
+            className='flex items-center gap-2 rounded-xl bg-espresso-clay px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:opacity-90 hover:shadow-lg'>
+            <PlusCircle size={18} />
+            ثبت محصول جدید
+          </Link>
+        </div>
       </div>
 
       {/* --- Stats Grid --- */}

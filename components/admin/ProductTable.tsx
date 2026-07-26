@@ -109,7 +109,7 @@ export default function ProductsGrid({
               return (
                 <tr
                   key={product._id}
-                  className='group border-b border-gray-100 transition hover:bg-gray-50 last:border-0'>
+                  className='group border-b border-espresso-clay/20 transition hover:bg-gray-50 last:border-0'>
                   {/* Thumbnail */}
                   <td className='py-3 pr-0'>
                     <div className='relative h-12 w-12 overflow-hidden rounded-lg border border-gray-200 bg-gray-100'>

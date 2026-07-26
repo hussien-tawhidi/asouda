@@ -25,7 +25,7 @@ export interface MostSellProductType {
 
   colors: ProductColor[];
 
-  rating?: number;
+  rating: number;
   reviews?: number;
   discount: number;
 
