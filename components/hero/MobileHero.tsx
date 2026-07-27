@@ -4,7 +4,17 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Pagination, Autoplay } from "swiper/modules";
 
+const FALLBACK_IMAGE = "/images/placeholder.jpg";
+
 export default function MobileHero({ images }: { images: string[] }) {
+  // ✅ sanitize images
+  const safeImages = images.filter(
+    (img): img is string => typeof img === "string" && img.trim() !== "",
+  );
+
+  // ✅ prevent rendering empty swiper
+  if (safeImages.length === 0) return null;
+
   return (
     <div className='block md:hidden'>
       <Swiper
@@ -21,16 +31,17 @@ export default function MobileHero({ images }: { images: string[] }) {
         }}
         modules={[EffectFade, Pagination, Autoplay]}
         className='mobileHeroSwiper'>
-        {images.map((item, i) => (
+        {safeImages.map((item, i) => (
           <SwiperSlide key={`${item}-${i}`}>
-            <div className='relative w-full aspect-square'>
+            <div className='relative w-full'>
               <Image
-                src={item}
+                src={item || FALLBACK_IMAGE} // ✅ never empty
                 alt={`Hero banner ${i + 1}`}
-                width={400}
-                height={400}
-                priority={i === 0}
-                className='object-cover w-auto h-full'
+                width={400} height={400}
+                // fill // ✅ better than width/height here
+                priority={i === 0} // ✅ only first image eager
+                sizes='100vw'
+                className='object-cover h-full w-full'
               />
             </div>
           </SwiperSlide>

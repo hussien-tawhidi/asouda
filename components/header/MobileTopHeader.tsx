@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import SearchBar from "./SearchBar";
+import SearchBar from "./search/search-bar/SearchBar";
 import { BiUser } from "react-icons/bi";
 import { PiHeartThin } from "react-icons/pi";
 import SocialIconsContact from "../common/SocialIconsContact";

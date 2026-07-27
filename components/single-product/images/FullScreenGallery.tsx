@@ -26,7 +26,7 @@ export default function FullscreenGallery({
 
   return (
     <div
-      className='fixed inset-0 z-[9999] flex items-center justify-center bg-black/90'
+      className='fixed inset-0 z-9999 flex items-center justify-center bg-black'
       onClick={onClose}>
       {/* Close */}
       <button
@@ -69,7 +69,9 @@ export default function FullscreenGallery({
         className='relative h-[85vh] w-[90vw] overflow-y-auto'
         onClick={(e) => e.stopPropagation()}>
         <div className='flex min-h-full items-center justify-center p-4'>
-          <img
+          <Image
+            width={500}
+            height={500}
             src={images[selectedImage]}
             alt={`تصویر ${selectedImage + 1}`}
             className='h-auto max-w-full object-contain'

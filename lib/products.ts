@@ -30,3 +30,17 @@ export const deleteProduct = async (
     return false;
   }
 };
+
+export const toggleLike = (
+  productId: string,
+  e: React.MouseEvent,
+  setLikedProducts: React.Dispatch<React.SetStateAction<string[]>>,
+) => {
+  e.stopPropagation();
+
+  setLikedProducts((prev) =>
+    prev.includes(productId)
+      ? prev.filter((id) => id !== productId)
+      : [...prev, productId],
+  );
+};

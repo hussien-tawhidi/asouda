@@ -4,7 +4,7 @@ import { categories } from "@/constant/home-data";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import SearchBar from "./SearchBar";
+import SearchBar from "./search/search-bar/SearchBar";
 import SocialIconsContact from "../common/SocialIconsContact";
 
 export default function DesktopHeader() {

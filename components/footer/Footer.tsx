@@ -7,10 +7,9 @@ import {
   footerQuickLinks,
   socialLinks,
 } from "@/constant/home-data";
+import NewsletterSignup from "./NewsletterSignup";
 
 export default function Footer() {
-
-
   return (
     <>
       <footer className='mt-20 border-t border-espresso-clay/20'>
@@ -93,29 +92,7 @@ export default function Footer() {
               </div>
 
               {/* --- NEWSLETTER SIGNUP (新增) --- */}
-              <div className='mt-6'>
-                <p className='mb-2 text-sm font-medium'>عضویت در خبرنامه</p>
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    // Handle subscription logic here
-                    alert("شما در خبرنامه ثبت شدید! (نمونه)");
-                  }}
-                  className='flex flex-col gap-2 sm:flex-row'>
-                  <input
-                    type='email'
-                    placeholder='ایمیل خود را وارد کنید'
-                    required
-                    className='flex-1 rounded-full border border-espresso-clay/30'
-                  />
-                  <button
-                    type='submit'
-                    className='flex items-center justify-center gap-1 rounded-full bg-espresso-clay px-5 py-2 text-sm font-medium text-bone-white'>
-                    <Mail size={16} />
-                    ثبت نام
-                  </button>
-                </form>
-              </div>
+              <NewsletterSignup />
 
               {/* Support text */}
               <p className='mt-4 text-sm text-espresso-clay/70'>

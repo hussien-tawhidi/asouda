@@ -4,9 +4,7 @@ import HomeBanner from "@/components/common/HomeBanner";
 import Loader from "@/components/common/Loader";
 import ProductSlider from "@/components/common/ProductSlider";
 import FeaturesSection from "@/components/Features";
-import { HeroCollage } from "@/components/hero/DesktopHero";
 import MobileHero from "@/components/hero/MobileHero";
-import Category from "@/components/home-cate/Category";
 import HomeAboutSection from "@/components/HomeAboutSection";
 import { MostSellProductType } from "@/types";
 import axios from "axios";
@@ -26,15 +24,6 @@ const banners = [
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<MostSellProductType[]>([]);
-  const images = [
-    "/images/hero/1.jpg",
-    "/images/hero/2.jpg",
-    "/images/hero/3.jpg",
-    "/images/hero/4.jpg",
-    "/images/hero/5.jpg",
-    "/images/hero/6.jpg",
-    "/images/hero/7.jpg",
-  ];
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -56,22 +45,28 @@ export default function Home() {
 
     fetchProducts();
   }, []);
-  if (loading || !products) {
-    <div className='flex items-center justify-center py-10'>
-      <Loader />
-    </div>;
+
+  if (loading) {
+    return (
+      <div className='flex items-center justify-center py-10'>
+        <Loader />
+      </div>
+    );
   }
+
+  const heroImages = () =>
+    products
+      .filter((item) => item.category === "سرویس خواب دو نفره")
+      .map((item) => item.image?.[0])
+      .filter((img): img is string => typeof img === "string") // ✅ type-safe
+      .slice(0, 7);
+
   return (
-    <div className='w-full overflow-hidden pb-20'>
-      <MobileHero images={images} />
-      <HeroCollage
-        title='خوابی رویایی با آسوده'
-        subtitle='با بهترین متریال‌ها و طراحی‌های مدرن، آرامش را به خانه‌تان بیاورید.'
-        images={images}
-        ctaText='مشاهده محصولات'
-        ctaLink='/products'
-        className='min-h-screen'
-      />
+    <div className='w-full overflow-hidden pb-20 pt-2'>
+      <MobileHero images={["/banners/hero.png","/banners/1.png"]} />
+      <div className='md:block hidden w-[85%] mx-auto mt-10'>
+        <HomeBanner image={"/banners/hero.png"} link={banners[0].link} />
+      </div>
       <FeaturesSection />
 
       <div className='flex flex-col gap-10 md:w-[90%] w-[95%] my-10 mx-auto'>
@@ -82,6 +77,7 @@ export default function Home() {
           <HomeBanner image={banners[1].image} link={banners[1].link} />
         </div>
       </div>
+
       <div className='bg-warm-putty'>
         <ProductSlider
           title='محصولات ویژه'
@@ -111,7 +107,6 @@ export default function Home() {
         products={products.filter((item) => item.category === "میزد ارایش")}
         exploreTitle='مشاهده بیشتر'
       />
-      <Category />
       <div className='my-8 h-px bg-linear-to-r from-transparent via-espresso-clay to-transparent md:my-10' />
 
       <HomeAboutSection />

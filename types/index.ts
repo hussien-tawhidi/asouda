@@ -52,3 +52,28 @@ export interface MultipleImageUploadType {
   maxImages?: number;
   required?: boolean;
 }
+
+export interface SearchOverlayProps {
+  query: string;
+  setQuery: (value: string) => void;
+  recentSearches: string[];
+  onClose: () => void;
+  onSearch: (term: string) => void;
+}
+
+export interface SearchInputProps {
+  query: string;
+  setQuery: (value: string) => void;
+  onClose: () => void;
+  onSearch: (term: string) => void;
+}
+
+export interface SearchSuggestionsProps {
+  recentSearches: string[];
+  onSearch: (term: string) => void;
+}
+
+export interface SearchResultsProps {
+  query: string;
+  onSearch: (term: string) => void;
+}

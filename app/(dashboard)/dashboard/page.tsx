@@ -10,7 +10,6 @@ import {
   List,
   BarChart3,
   Settings,
-  ArrowLeft,
   StoreIcon,
 } from "lucide-react";
 import AdminQuickAction from "@/components/admin/AdminQuickAction";
@@ -19,6 +18,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ProductsGrid from "@/components/admin/ProductTable";
 import { MostSellProductType } from "@/types";
+import Loader from "@/components/common/Loader";
 
 export default function DashboardHomePage() {
   const [products, setProducts] = useState<MostSellProductType[]>([]);
@@ -49,6 +49,14 @@ export default function DashboardHomePage() {
     };
     fetchData();
   }, []);
+
+  if (loading) {
+    return (
+      <div className='flex items-center justify-center py-10'>
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className='space-y-8 w-[95%] px-[5%] mt-10 mx-auto'>
