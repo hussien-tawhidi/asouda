@@ -95,7 +95,7 @@ export default function ProductDetailsPage() {
       <section className='mt-14'>
         <h2 className='mb-5 text-2xl font-bold'>توضیحات محصول</h2>
 
-        <p className='whitespace-pre-line text-[11px] leading-8 text-espresso-clay/80 md:text-sm'>
+        <p className='whitespace-pre-line leading-8 text-espresso-clay/80 text-sm'>
           {product.description}
         </p>
       </section>

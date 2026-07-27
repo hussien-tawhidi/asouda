@@ -54,13 +54,6 @@ export default function Home() {
     );
   }
 
-  const heroImages = () =>
-    products
-      .filter((item) => item.category === "سرویس خواب دو نفره")
-      .map((item) => item.image?.[0])
-      .filter((img): img is string => typeof img === "string") // ✅ type-safe
-      .slice(0, 7);
-
   return (
     <div className='w-full overflow-hidden pb-20 pt-2'>
       <MobileHero images={["/banners/hero.png", "/banners/hero1.png"]} />

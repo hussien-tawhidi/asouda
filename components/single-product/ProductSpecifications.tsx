@@ -43,7 +43,7 @@ export default function ProductSpecifications({
         {specifications.map((item, index) => (
           <div
             key={item.label}
-            className={`grid grid-cols-2 md:text-sm text-[11px] items-center px-6 py-4 ${
+            className={`grid grid-cols-2 text-xs items-center px-6 py-4 ${
               index !== specifications.length - 1
                 ? "border-b border-espresso-clay/20"
                 : ""
