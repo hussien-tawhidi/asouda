@@ -3,9 +3,8 @@ import SearchResultsGrid from "../../../components/header/SearchResultsGrid";
 import Loader from "@/components/common/Loader";
 
 async function fetchSearchResults(q: string, page: number, limit: number) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   const res = await fetch(
-    `${baseUrl}/api/search?q=${encodeURIComponent(q)}&page=${page}&limit=${limit}`,
+    `/api/search?q=${encodeURIComponent(q)}&page=${page}&limit=${limit}`,
     { cache: "no-store" },
   );
   if (!res.ok) {
