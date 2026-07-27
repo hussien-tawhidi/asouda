@@ -21,6 +21,12 @@ const banners = [
     link: "/offers",
   },
 ];
+
+const mobileBanner = [
+  { image: "/banners/hero.png", link: "/category/double-bedroom-set" },
+  { image: "/banners/hero1.png", link: "/category/modern-bedroom-set" },
+];
+
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<MostSellProductType[]>([]);
@@ -56,7 +62,7 @@ export default function Home() {
 
   return (
     <div className='w-full overflow-hidden pb-20 pt-2'>
-      <MobileHero images={["/banners/hero.png", "/banners/hero1.png"]} />
+      <MobileHero banner={mobileBanner} />
       <div className='md:block hidden w-[85%] mx-auto mt-10'>
         <HomeBanner image={"/banners/hero.png"} link={banners[0].link} />
       </div>

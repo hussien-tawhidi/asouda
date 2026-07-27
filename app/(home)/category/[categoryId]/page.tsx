@@ -16,7 +16,6 @@ export default function CategoryPage() {
   const category = categories.find(
     (cat) => cat.href.split("/").pop() === categoryId,
   );
-  console.log("🚀 ~ CategoryPage ~ category:", category);
 
   if (!category) {
     notFound();

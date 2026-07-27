@@ -3,18 +3,18 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Pagination, Autoplay } from "swiper/modules";
+import Link from "next/link";
 
 const FALLBACK_IMAGE = "/images/placeholder.jpg";
 
-export default function MobileHero({ images }: { images: string[] }) {
-  // ✅ sanitize images
-  const safeImages = images.filter(
-    (img): img is string => typeof img === "string" && img.trim() !== "",
-  );
-
-  // ✅ prevent rendering empty swiper
-  if (safeImages.length === 0) return null;
-
+export default function MobileHero({
+  banner,
+}: {
+  banner: {
+    image: string;
+    link: string;
+  }[];
+}) {
   return (
     <div className='block md:hidden'>
       <Swiper
@@ -31,19 +31,19 @@ export default function MobileHero({ images }: { images: string[] }) {
         }}
         modules={[EffectFade, Pagination, Autoplay]}
         className='mobileHeroSwiper'>
-        {safeImages.map((item, i) => (
+        {banner.map((item, i) => (
           <SwiperSlide key={`${item}-${i}`}>
-            <div className='relative w-full'>
+            <Link href={item.link} className='relative w-full'>
               <Image
-                src={item || FALLBACK_IMAGE} // ✅ never empty
+                src={item.image || FALLBACK_IMAGE}
                 alt={`Hero banner ${i + 1}`}
-                width={400} height={400}
-                // fill // ✅ better than width/height here
-                priority={i === 0} // ✅ only first image eager
+                width={400}
+                height={400}
+                priority={i === 0}
                 sizes='100vw'
                 className='object-cover h-full w-full'
               />
-            </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

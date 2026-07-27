@@ -54,7 +54,7 @@ export default function HomeAboutSection() {
           {/* Image - left side on desktop */}
           <div className='relative overflow-hidden rounded-2xl shadow-lg order-1 md:order-1'>
             <Image
-              src='/images/home-about.jpg' // ← Replace with your actual image path
+              src='/about.jpg' // ← Replace with your actual image path
               alt='سرویس خواب آسوده - آرامش و کیفیت'
               width={400}
               height={400}

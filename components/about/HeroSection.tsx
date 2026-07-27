@@ -10,7 +10,7 @@ export default function HeroSection() {
     <section className='relative h-[80vh] min-h-150 overflow-hidden'>
       {/* Banner */}
       <Image
-        src='/images/home-about.jpg'
+        src='/about.jpg'
         alt='درباره آسوده'
         fill
         priority
