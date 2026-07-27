@@ -38,7 +38,7 @@ export default function SearchList({
   };
 
   return (
-    <div onKeyDown={handleKeyDown}>
+    <div onKeyDown={handleKeyDown} className="">
       {results.map((item, index) => (
         <SearchResultItem
           key={item._id}
