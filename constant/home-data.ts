@@ -54,49 +54,49 @@ export const categories = [
   {
     name: "خانه",
     slug: "home",
-    image: "/images/categories/modern.jpg", // در صورت نیاز تصویر مناسب قرار دهید
+    image: "/about.jpg", // در صورت نیاز تصویر مناسب قرار دهید
     href: "/",
   },
   {
     name: "سرویس خواب مدرن",
     slug: "modern",
-    image: "/images/categories/modern.jpg",
+    image: "/images/modern.jpg",
     href: "/category/modern-bedroom-set",
   },
   {
     name: "سرویس خواب باکس‌دار",
     slug: "storage",
-    image: "/images/categories/space.jpg",
+    image: "/images/box.webp",
     href: "/category/box-bedroom-set",
   },
   {
     name: "سرویس خواب دو نفره",
     slug: "double",
-    image: "/images/categories/double.jpg",
+    image: "/images/double.png",
     href: "/category/double-bedroom-set",
   },
   {
     name: "سرویس خواب یک نفره",
     slug: "single",
-    image: "/images/categories/single.jpg",
+    image: "/images/single.png",
     href: "/category/single-bedroom-set",
   },
   {
     name: "سرویس خواب کودک / نوجوان",
     slug: "kids",
-    image: "/images/categories/kid.jpg",
+    image: "/images/kid.png",
     href: "/category/kids-bedroom-set",
   },
   {
     name: "سرویس خواب سلطنتی",
     slug: "classic",
-    image: "/images/categories/kingdom.jpg",
+    image: "/images/kingdom.jpg",
     href: "/category/classic-bedroom-set",
   },
   {
     name: "میزد ارایش",
     slug: "beauty-desk",
-    image: "/images/categories/kingdom.jpg",
+    image: "/images/beauty-desk.jpg",
     href: "/category/beauty-desk",
   },
 ];
