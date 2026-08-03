@@ -8,6 +8,7 @@ import MobileHero from "@/components/hero/MobileHero";
 import HomeAboutSection from "@/components/HomeAboutSection";
 import { MostSellProductType } from "@/types";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -28,6 +29,9 @@ const mobileBanner = [
 ];
 
 export default function Home() {
+  const { data: session } = useSession();
+  console.log("🚀 ~ Home ~ session:", session);
+
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<MostSellProductType[]>([]);
 

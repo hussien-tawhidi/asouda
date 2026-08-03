@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { iranYekan } from "@/lib/font";
 import { Toaster } from "react-hot-toast";
+import { auth } from "@/auth";
+import Providers from "@/components/providers/AuthProvider";
 import "./globals.css";
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -84,21 +86,24 @@ export const viewport: Viewport = {
   themeColor: "#5b4c3a", // optional, you can also keep it in metadata
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
- 
+  const session = await auth();
+
   return (
     <html
       lang='fa'
       dir='rtl'
       className={`${iranYekan.variable} h-full antialiased`}>
       <body className='min-h-full flex flex-col'>
-        {children}
+        <Providers session={session}>
+          {children}
 
-        <Toaster />
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );

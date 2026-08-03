@@ -1,4 +1,6 @@
+import { auth } from "@/auth";
 import type { Viewport } from "next";
+import { redirect } from "next/navigation";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -11,6 +13,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
- 
-  return <main>{children}</main>;
+  const session = await auth();
+
+  if (!session || session.user.role !== "admin") {
+    redirect("/signin");
+  }
+  return <>{children}</>;
 }
