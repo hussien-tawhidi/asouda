@@ -30,7 +30,7 @@ export default function ParallaxCTA() {
           </p>
           <div className='mt-8 flex flex-wrap items-center justify-center gap-4'>
             <Link
-              href='/products'
+              href='/category/double-bedroom-set'
               className='group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-bone-white md:px-8 px-4 md:py-3 py-1.5 text-sm font-medium text-espresso-clay transition hover:shadow-lg hover:shadow-bone-white/20'>
               مشاهده محصولات
               <ChevronRight

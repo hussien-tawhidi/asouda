@@ -1,47 +1,12 @@
 "use client";
 
 import SocialIconsContact from "@/components/common/SocialIconsContact";
+import ContactForm from "@/components/contact/ContactForm";
 import { contactInfo } from "@/constant/home-data";
-import { useState } from "react";
-import { BiMap, BiSend, BiCheckCircle } from "react-icons/bi";
-import { BsInstagram, BsWhatsapp, BsTelegram } from "react-icons/bs";
+import Link from "next/link";
+import { BiMap } from "react-icons/bi";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
-    setIsLoading(false);
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
-  };
-
-  // Contact info items
-
   return (
     <div className='min-h-screen py-12 md:py-20'>
       <div className='container mx-auto max-w-6xl px-4'>
@@ -75,13 +40,19 @@ export default function ContactPage() {
                   {item.title}
                 </h3>
                 {item.link ? (
-                  <a
+                  <Link
+                    dir={
+                      typeof item.value === "string" &&
+                      /^[+\d\s()-]+$/.test(item.value)
+                        ? "ltr"
+                        : undefined
+                    }
                     href={item.link}
                     target={item.link.startsWith("http") ? "_blank" : undefined}
                     rel='noopener noreferrer'
                     className='mt-1 block md:text-sm text-[10px] text-espresso-clay/70 transition hover:text-earth-brown'>
                     {item.value}
-                  </a>
+                  </Link>
                 ) : (
                   <>
                     <p className='mt-1 md:text-sm text-[10px] text-espresso-clay/70'>
@@ -108,145 +79,7 @@ export default function ContactPage() {
                 ارسال پیام
               </h2>
 
-              {isSubmitted ? (
-                <div className='flex flex-col items-center justify-center rounded-xl p-8 text-center'>
-                  <BiCheckCircle size={48} className='text-emerald-500' />
-                  <h3 className='mt-3 text-lg font-bold text-emerald-700'>
-                    پیام شما با موفقیت ارسال شد!
-                  </h3>
-                  <p className='text-sm text-emerald-600'>
-                    به زودی با شما تماس خواهیم گرفت.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className='space-y-4'>
-                  <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
-                    <div>
-                      <label
-                        htmlFor='name'
-                        className='mb-1 block text-sm font-medium text-espresso-clay'>
-                        نام و نام خانوادگی *
-                      </label>
-                      <input
-                        type='text'
-                        id='name'
-                        name='name'
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className='w-full rounded-xl border border-espresso-clay/20 bg-bone-white/50 px-4 py-2.5 text-sm text-espresso-clay transition focus:border-earth-brown focus:outline-none focus:ring-2 focus:ring-earth-brown/20'
-                        placeholder='نام خود را وارد کنید'
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor='email'
-                        className='mb-1 block text-sm font-medium text-espresso-clay'>
-                        ایمیل *
-                      </label>
-                      <input
-                        type='email'
-                        id='email'
-                        name='email'
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className='w-full rounded-xl border border-espresso-clay/20 bg-bone-white/50 px-4 py-2.5 text-sm text-espresso-clay transition focus:border-earth-brown focus:outline-none focus:ring-2 focus:ring-earth-brown/20'
-                        placeholder='ایمیل خود را وارد کنید'
-                      />
-                    </div>
-                  </div>
-
-                  <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
-                    <div>
-                      <label
-                        htmlFor='phone'
-                        className='mb-1 block text-sm font-medium text-espresso-clay'>
-                        تلفن همراه
-                      </label>
-                      <input
-                        type='tel'
-                        id='phone'
-                        name='phone'
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className='w-full rounded-xl border border-espresso-clay/20 bg-bone-white/50 px-4 py-2.5 text-sm text-espresso-clay transition focus:border-earth-brown focus:outline-none focus:ring-2 focus:ring-earth-brown/20'
-                        placeholder='۰۹۱۲۳۴۵۶۷۸۹'
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor='subject'
-                        className='mb-1 block text-sm font-medium text-espresso-clay'>
-                        موضوع *
-                      </label>
-                      <input
-                        type='text'
-                        id='subject'
-                        name='subject'
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        className='w-full rounded-xl border border-espresso-clay/20 bg-bone-white/50 px-4 py-2.5 text-sm text-espresso-clay transition focus:border-earth-brown focus:outline-none focus:ring-2 focus:ring-earth-brown/20'
-                        placeholder='موضوع پیام'
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor='message'
-                      className='mb-1 block text-sm font-medium text-espresso-clay'>
-                      پیام *
-                    </label>
-                    <textarea
-                      id='message'
-                      name='message'
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      className='w-full rounded-xl border border-espresso-clay/20 bg-bone-white/50 px-4 py-2.5 text-sm text-espresso-clay transition focus:border-earth-brown focus:outline-none focus:ring-2 focus:ring-earth-brown/20'
-                      placeholder='پیام خود را بنویسید...'
-                    />
-                  </div>
-
-                  <button
-                    type='submit'
-                    disabled={isLoading}
-                    className='inline-flex w-full items-center justify-center gap-2 rounded-xl bg-espresso-clay px-6 py-3 text-sm font-medium text-bone-white transition hover:bg-earth-brown hover:shadow-lg hover:shadow-espresso-clay/20 disabled:opacity-70 disabled:cursor-not-allowed'>
-                    {isLoading ? (
-                      <>
-                        <svg
-                          className='h-4 w-4 animate-spin'
-                          xmlns='http://www.w3.org/2000/svg'
-                          fill='none'
-                          viewBox='0 0 24 24'>
-                          <circle
-                            className='opacity-25'
-                            cx='12'
-                            cy='12'
-                            r='10'
-                            stroke='currentColor'
-                            strokeWidth='4'
-                          />
-                          <path
-                            className='opacity-75'
-                            fill='currentColor'
-                            d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z'
-                          />
-                        </svg>
-                        در حال ارسال...
-                      </>
-                    ) : (
-                      <>
-                        <BiSend size={18} />
-                        ارسال پیام
-                      </>
-                    )}
-                  </button>
-                </form>
-              )}
+              <ContactForm />
             </div>
           </div>
 
@@ -272,7 +105,7 @@ export default function ContactPage() {
                 </div>
                 {/* You can embed Google Maps iframe here */}
                 <iframe
-                  src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3270.7475771869695!2d51.87737683725795!3d35.716115614653745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f91d0bf363e7f15%3A0xf65114c47f52b860!2sBumehen%2C%20Tehran%20Province%2C%20Iran!5e0!3m2!1sen!2snl!4v1784614702830!5m2!1sen!2snl'
+                  src='https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3239.4635752815307!2d51.878834942935946!3d35.71481597649133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDQyJzUzLjMiTiA1McKwNTInNTIuNCJF!5e0!3m2!1sen!2snl!4v1786435140487!5m2!1sen!2snl'
                   className='absolute inset-0 h-full w-full'
                   allowFullScreen
                   loading='lazy'

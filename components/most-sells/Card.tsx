@@ -20,10 +20,6 @@ export default function Card({
   hasDiscount,
   toggleLike,
 }: ProductCardProps) {
-
-
-
-
   const imageSrc =
     product.image[0] instanceof File
       ? URL.createObjectURL(product.image[0])
@@ -39,6 +35,7 @@ export default function Card({
             src={imageSrc}
             alt={product.name}
             width={400}
+            loading='eager'
             height={400}
             className='object-cover h-full w-full transition duration-500 group-hover:scale-105'
           />

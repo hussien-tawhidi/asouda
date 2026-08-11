@@ -389,7 +389,7 @@ export const footerQuickLinks = [
   },
   {
     title: "محصولات",
-    href: "/products",
+    href: "/category/double-bedroom-set",
   },
   {
     title: "درباره ما",
@@ -404,7 +404,7 @@ export const footerQuickLinks = [
 export const footerContactInfo = [
   {
     icon: Phone,
-    value: "0930 450 8055",
+    value: "0903 093 1288",
   },
   {
     icon: Mail,
@@ -422,14 +422,14 @@ export const contactInfo = [
   {
     icon: BiMap,
     title: "آدرس",
-    value: "تهران، خیابان آزادی، خیابان شهید حیدری، پلاک ۱۵",
+    value: "تهران - پردیس - کمربندی بومهن - خیابان فردین راد - پلاک 6",
     link: "https://maps.google.com",
   },
   {
     icon: BiPhone,
     title: "تلفن تماس",
-    value: "۰۲۱-۱۲۳۴۵۶۷۸",
-    link: "tel:+982112345678",
+    value: "0903 093 1288",
+    link: "tel:+989030931288",
   },
   {
     icon: BiEnvelope,

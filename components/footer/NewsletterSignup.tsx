@@ -36,7 +36,7 @@ export default function NewsletterSignup() {
      }
 
      setStatus("success");
-     setMessage("با موفقیت در خبرنامه ثبت شدید! ✅");
+     setMessage("با موفقیت در خبرنامه ثبت شدید! ");
      setEmail("");
    } catch (error) {
      console.error("Newsletter error:", error);
