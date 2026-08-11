@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {  Pagination } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 
 import ExploreBtn from "../common/ExploreBtn";
 import Card from "../most-sells/Card";
@@ -24,6 +24,7 @@ export default function ProductSlider({
   onExplore,
 }: ProductSliderProps) {
   const [likedProducts, setLikedProducts] = useState<string[]>([]);
+ 
 
   const toggleLike = (productId: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -64,6 +65,7 @@ export default function ProductSlider({
           <Swiper
             modules={[Pagination]}
             spaceBetween={8}
+            className='mobileHeroSwiper'
             slidesPerView={2}
             pagination={{
               clickable: true,
@@ -92,7 +94,7 @@ export default function ProductSlider({
                 : product.price;
 
               return (
-                <SwiperSlide key={product._id} className="pb-14">
+                <SwiperSlide key={product._id} className='pb-14 '>
                   <Card
                     product={product}
                     isLiked={likedProducts.includes(product._id)}

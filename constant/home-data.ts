@@ -404,15 +404,15 @@ export const footerQuickLinks = [
 export const footerContactInfo = [
   {
     icon: Phone,
-    value: "0912 345 6789",
+    value: "0930 450 8055",
   },
   {
     icon: Mail,
-    value: "info@example.com",
+    value: "info@asouda.com",
   },
   {
     icon: MapPin,
-    value: "تهران، ایران",
+    value: "تهران - پردیس - کمربندی بومهن - خیابان فردین راد - پلاک 6",
     className: "items-start",
     iconClassName: "mt-1",
   },
@@ -556,4 +556,21 @@ export const mdfColors = [
   { name: "مشکی هایگلاس", value: "#101010" },
   { name: "طوسی هایگلاس", value: "#A6A6A6" },
   { name: "مشکی مات", value: "#1E1E1E" },
+];
+
+// =========for home hero banner
+export const banners = [
+  {
+    image: "/banners/1.jpg",
+    link: "/products",
+  },
+  {
+    image: "/banners/2.jpg",
+    link: "/offers",
+  },
+];
+
+export const mobileBanner = [
+  { image: "/banners/hero.png", link: "/category/double-bedroom-set" },
+  { image: "/banners/hero1.png", link: "/category/modern-bedroom-set" },
 ];

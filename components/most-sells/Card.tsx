@@ -20,6 +20,10 @@ export default function Card({
   hasDiscount,
   toggleLike,
 }: ProductCardProps) {
+
+
+
+
   const imageSrc =
     product.image[0] instanceof File
       ? URL.createObjectURL(product.image[0])

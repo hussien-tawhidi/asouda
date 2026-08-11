@@ -6,42 +6,27 @@ import ProductSlider from "@/components/common/ProductSlider";
 import FeaturesSection from "@/components/Features";
 import MobileHero from "@/components/hero/MobileHero";
 import HomeAboutSection from "@/components/HomeAboutSection";
+import { banners, mobileBanner } from "@/constant/home-data";
 import { MostSellProductType } from "@/types";
 import axios from "axios";
-import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const banners = [
-  {
-    image: "/banners/1.png",
-    link: "/products",
-  },
-  {
-    image: "/banners/2.png",
-    link: "/offers",
-  },
-];
-
-const mobileBanner = [
-  { image: "/banners/hero.png", link: "/category/double-bedroom-set" },
-  { image: "/banners/hero1.png", link: "/category/modern-bedroom-set" },
-];
-
 export default function Home() {
-  const { data: session } = useSession();
-  console.log("🚀 ~ Home ~ session:", session);
-
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<MostSellProductType[]>([]);
+  const router = useRouter();
 
+  const onClickExplore = (category: string) => {
+    router.push(`/category/${category}`);
+  };
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
 
         const { data } = await axios.get("/api/products/home");
-        // console.log("🚀 ~ fetchProducts ~ data:", data.data)
 
         // Change this if your API returns a different shape
         setProducts(data.data);
@@ -85,6 +70,7 @@ export default function Home() {
         <ProductSlider
           title='محصولات ویژه'
           description='جدیدترین و محبوب‌ترین محصولات با بهترین کیفیت'
+          onExplore={() => onClickExplore("modern-bedroom-set")}
           products={products.filter(
             (item) => item.category === "سرویس خواب دو نفره",
           )}
@@ -94,18 +80,18 @@ export default function Home() {
       <ProductSlider
         title='پرفروش‌ترین سرویس‌ها'
         description='جدیدترین و محبوب‌ترین محصولات با بهترین کیفیت'
-        products={products.filter((item) =>
-          [
-            "سرویس خواب مدرن",
-            "سرویس خواب یک نفره",
-            "سرویس خواب کودک / نوجوان",
-          ].includes(item.category),
-        )}
+        onExplore={() => onClickExplore("double-bedroom-set")}
+        products={products
+          .filter((item) =>
+            ["سرویس خواب مدرن", "سرویس خواب یک نفره"].includes(item.category),
+          )
+          .slice(0, 8)}
         exploreTitle='مشاهده همه محصولات'
       />
       <hr className='border-espresso-clay/30 my-3 w-[90%] mx-auto' />
       <ProductSlider
         title='شیک ترین میز ارایشی'
+        onExplore={() => onClickExplore("beauty-desk")}
         description='محصولات تازه اضافه شده'
         products={products.filter((item) => item.category === "میزد ارایش")}
         exploreTitle='مشاهده بیشتر'

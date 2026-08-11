@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Mail } from "lucide-react"; // ← new icons
 import {
   footerContactInfo,
   footerQuickLinks,
@@ -64,7 +63,16 @@ export default function Footer() {
                       <span className='flex h-8 w-8 shrink-0 items-center justify-center rounded-full'>
                         <Icon size={16} className={iconClassName} />
                       </span>
-                      <span className='leading-relaxed'>{value}</span>
+                      <span
+                        dir={
+                          typeof value === "string" &&
+                          /^[+\d\s()-]+$/.test(value)
+                            ? "ltr"
+                            : undefined
+                        }
+                        className='leading-relaxed text-sm'>
+                        {value}
+                      </span>
                     </div>
                   ),
                 )}

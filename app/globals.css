@@ -73,7 +73,7 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: #d1d5db;
+  background: #5b4c3a80;
   opacity: 1;
   transition: all .35s ease;
 }
