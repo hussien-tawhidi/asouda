@@ -10,27 +10,46 @@ export default function NewsletterSignup() {
   >("idle");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!email.trim()) return;
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+   e.preventDefault();
 
-    setStatus("loading");
-    setMessage("");
+   if (!email.trim()) return;
 
-    // Simulate API call – replace with real fetch
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      // On success:
-      setStatus("success");
-      setMessage("با موفقیت در خبرنامه ثبت شدید! ✅");
-      setEmail("");
-    } catch (err) {
-      console.log("🚀 ~ handleSubmit ~ err:", err);
-      setStatus("error");
-      setMessage("خطا در ثبت‌نام. لطفاً دوباره تلاش کنید.");
-    }
-  };
+   setStatus("loading");
+   setMessage("");
 
+   try {
+     const response = await fetch("/api/newsletter", {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({
+         email: email.trim(),
+       }),
+     });
+
+     const data = await response.json();
+
+     if (!response.ok) {
+       throw new Error(data.message || "خطا در ثبت‌نام");
+     }
+
+     setStatus("success");
+     setMessage("با موفقیت در خبرنامه ثبت شدید! ✅");
+     setEmail("");
+   } catch (error) {
+     console.error("Newsletter error:", error);
+
+     setStatus("error");
+
+     setMessage(
+       error instanceof Error
+         ? error.message
+         : "خطا در ثبت‌نام. لطفاً دوباره تلاش کنید.",
+     );
+   }
+ };
   return (
     <div className='mt-6'>
       <p className='mb-2 text-sm font-medium text-earth-brown/80'>
