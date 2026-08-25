@@ -119,7 +119,7 @@ export default function SearchSuggestions({
                   height={32}
                 />
               )}
-              <span className='flex-1 truncate text-sm text-earth-brown'>
+              <span className='flex-1 truncate md:text-sm text-[12px] md:text-nowrap text-wrap text-earth-brown'>
                 {item.name}
               </span>
               <BsArrowRight className='w-3.5 h-3.5 text-earth-brown/20 group-hover:text-earth-brown/50 transition-colors shrink-0' />

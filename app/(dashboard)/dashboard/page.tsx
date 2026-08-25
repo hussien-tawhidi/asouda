@@ -4,7 +4,7 @@ import { PlusCircle, List, BarChart3, Settings } from "lucide-react";
 import AdminQuickAction from "@/components/admin/dashboard/AdminQuickAction";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ProductsGrid from "@/components/admin/dashboard/ProductTable";
+import Products from "@/components/admin/dashboard/product-table/ProductTable";
 import { MostSellProductType } from "@/types";
 import Loader from "@/components/common/Loader";
 import DashboardHeader from "@/components/admin/dashboard/DashboardHeaader";
@@ -48,54 +48,53 @@ export default function DashboardHomePage() {
     );
   }
 
+  return (
+    <div className='space-y-8 w-[95%] px-[5%] mt-10 mx-auto'>
+      {/* --- Header --- */}
+      <DashboardHeader
+        title='مدیریت محصولات'
+        description='در این بخش می‌توانید محصولات فروشگاه را مدیریت کنید.'
+      />
 
-    return (
-      <div className='space-y-8 w-[95%] px-[5%] mt-10 mx-auto'>
-        {/* --- Header --- */}
-        <DashboardHeader
-          title='مدیریت محصولات'
-          description='در این بخش می‌توانید محصولات فروشگاه را مدیریت کنید.'
-        />
+      {/* --- Stats Grid --- */}
+      <DashboardStats stats={stats} formatCurrency={formatCurrency} />
 
-        {/* --- Stats Grid --- */}
-        <DashboardStats stats={stats} formatCurrency={formatCurrency} />
-
-        {/* --- Quick Actions --- */}
-        <div className='rounded-2xl border border-gray-200 bg-white p-6 shadow-sm'>
-          <h2 className='mb-4 text-lg font-semibold text-gray-700'>
-            اقدامات سریع
-          </h2>
-          <div className='grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4'>
-            <AdminQuickAction
-              href='/dashboard/create-product'
-              icon={PlusCircle}
-              label='ثبت محصول جدید'
-            />
-            <AdminQuickAction
-              href='/dashboard/products'
-              icon={List}
-              label='مدیریت محصولات'
-            />
-            <AdminQuickAction
-              href='/dashboard/analytics'
-              icon={BarChart3}
-              label='گزارش‌ها و آمار'
-            />
-            <AdminQuickAction
-              href='/dashboard/settings'
-              icon={Settings}
-              label='تنظیمات'
-            />
-          </div>
-        </div>
-
-        <div className=' mx-auto'>
-          <ProductsGrid
-            products={products}
-            loading={loading}
-            setData={setProducts}
+      {/* --- Quick Actions --- */}
+      <div className='rounded-2xl border border-light-mode/20  p-6 shadow-sm'>
+        <h2 className='mb-4 text-lg font-semibold text-light-mode'>
+          اقدامات سریع
+        </h2>
+        <div className='grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4'>
+          <AdminQuickAction
+            href='/dashboard/create-product'
+            icon={PlusCircle}
+            label='ثبت محصول جدید'
+          />
+          <AdminQuickAction
+            href='/dashboard/products'
+            icon={List}
+            label='مدیریت محصولات'
+          />
+          <AdminQuickAction
+            href='/dashboard/analytics'
+            icon={BarChart3}
+            label='گزارش‌ها و آمار'
+          />
+          <AdminQuickAction
+            href='/dashboard/settings'
+            icon={Settings}
+            label='تنظیمات'
           />
         </div>
       </div>
-    );
+
+      <div className=' mx-auto'>
+        
+        <Products
+          products={products}
+          setData={setProducts}
+        />
+      </div>
+    </div>
+  );
 }

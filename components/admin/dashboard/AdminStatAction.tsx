@@ -8,10 +8,10 @@ interface StatCardProps {
 
 export default function AdminStatCard({ title, value, icon: Icon, color, trend }: StatCardProps) {
   const colorClasses = {
-    blue: "bg-blue-50 text-blue-600",
-    green: "bg-green-50 text-green-600",
-    purple: "bg-purple-50 text-purple-600",
-    orange: "bg-orange-50 text-orange-600",
+    blue: "bg-blue-900 text-blue-600",
+    green: "bg-green-900 text-green-600",
+    purple: "bg-purple-900 text-purple-600",
+    orange: "bg-orange-900 text-orange-600",
   };
 
   const trendColor = {
@@ -22,11 +22,11 @@ export default function AdminStatCard({ title, value, icon: Icon, color, trend }
   };
 
   return (
-    <div className='rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md'>
+    <div className='rounded-2xl p-5 shadow-2xl shadow-light-mode/20 transition hover:shadow-md'>
       <div className='flex items-start justify-between'>
         <div>
-          <p className='text-sm text-gray-500'>{title}</p>
-          <p className='text-2xl font-bold text-gray-800'>{value}</p>
+          <p className='text-sm text-light-lavender'>{title}</p>
+          <p className='text-2xl font-bold text-light-mode'>{value}</p>
         </div>
         <div className={`rounded-xl p-2.5 ${colorClasses[color]}`}>
           <Icon size={20} />

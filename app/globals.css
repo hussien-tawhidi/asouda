@@ -15,6 +15,12 @@
   --color-mushroom-beige: #c4b39a;
   --color-warm-putty: #ded1ba;
   --color-bone-white: #f4efe6;
+  /* ============= dark mode =================== */
+  --color-dark-bg: #2c2c2c;
+  --color-light-mode: #e4e4e4;
+  --color-light-cyan: #A8DADC;
+  --color-light-pink: #FFC1CC;
+  --color-light-lavender: #B39CD0;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -75,7 +81,7 @@ body {
   border-radius: 999px;
   background: #5b4c3a80;
   opacity: 1;
-  transition: all .35s ease;
+  transition: all 0.35s ease;
 }
 
 .mobileHeroSwiper .swiper-pagination-bullet-active {

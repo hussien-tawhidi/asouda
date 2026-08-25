@@ -18,5 +18,5 @@ export default async function RootLayout({
   if (!session || session.user.role !== "admin") {
     redirect("/signin");
   }
-  return <>{children}</>;
+  return <div className="bg-dark-bg min-h-screen">{children}</div>;
 }
