@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SearchBar from "./search/search-bar/SearchBar";
 import SocialIconsContact from "../common/SocialIconsContact";
+import TopBar from "./TopBar";
 
 export default function DesktopHeader() {
   const pathname = usePathname();
@@ -13,32 +14,7 @@ export default function DesktopHeader() {
   return (
     <header className='w-full border-b border-espresso-clay/10 shadow-sm'>
       {/* Top Bar */}
-      <div className='bg-espresso-clay text-bone-white'>
-        <div className='mx-auto flex h-9 max-w-7xl items-center justify-between px-6 text-xs'>
-          <span>
-            خوش آمدید |{" "}
-            <Link
-              href='/login'
-              className='underline underline-offset-4 hover:text-earth-brown transition-colors'>
-              ورود
-            </Link>
-          </span>
-
-          <div className='flex items-center gap-5'>
-            <Link
-              href='/wishlist'
-              className='hover:text-earth-brown transition-colors'>
-              علاقه‌مندی‌ها
-            </Link>
-
-            <Link
-              href='/account'
-              className='hover:text-earth-brown transition-colors'>
-              حساب کاربری
-            </Link>
-          </div>
-        </div>
-      </div>
+      <TopBar />
 
       {/* Logo + Search + Slogan */}
       <div className='mx-auto flex max-w-7xl items-center justify-between gap-8 px-6 py-5'>

@@ -9,10 +9,10 @@ export async function POST(req: Request) {
 
     const body = await req.json();
 
-    const { name, email, password } = body;
+    const { name, email, password, phone } = body;
 
     // Validate fields
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !phone) {
       return NextResponse.json(
         {
           message: "تمامی فیلدها الزامی هستند.",
@@ -46,6 +46,7 @@ export async function POST(req: Request) {
     const user = await User.create({
       name,
       email,
+      phone,
       password: hashedPassword,
 
       // First user can be admin manually

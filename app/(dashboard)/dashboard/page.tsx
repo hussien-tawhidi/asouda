@@ -9,6 +9,7 @@ import { MostSellProductType } from "@/types";
 import Loader from "@/components/common/Loader";
 import DashboardHeader from "@/components/admin/dashboard/DashboardHeaader";
 import DashboardStats from "@/components/admin/dashboard/DashboardStat";
+import ProductsEmpty from "@/components/admin/dashboard/product-table/ProductsEmpty";
 
 export default function DashboardHomePage() {
   const [products, setProducts] = useState<MostSellProductType[]>([]);
@@ -46,6 +47,10 @@ export default function DashboardHomePage() {
         <Loader />
       </div>
     );
+  }
+
+  if (!products.length) {
+    return <ProductsEmpty />;
   }
 
   return (
@@ -89,11 +94,7 @@ export default function DashboardHomePage() {
       </div>
 
       <div className=' mx-auto'>
-        
-        <Products
-          products={products}
-          setData={setProducts}
-        />
+        <Products products={products} setData={setProducts} />
       </div>
     </div>
   );

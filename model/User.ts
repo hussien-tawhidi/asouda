@@ -1,4 +1,4 @@
-import  { Schema, Document, models, model } from "mongoose";
+import { Schema, Document, models, model } from "mongoose";
 
 export interface IUser extends Document {
   name: string;
@@ -24,7 +24,8 @@ export interface IUser extends Document {
     phone: string;
     isDefault: boolean;
   }[];
-
+  resetPasswordToken?: string;
+  resetPasswordExpires?: Date;
   isActive: boolean;
 
   createdAt: Date;
@@ -43,6 +44,7 @@ const AddressSchema = new Schema(
     postalCode: String,
     receiver: String,
     phone: String,
+    
     isDefault: {
       type: Boolean,
       default: false,
@@ -97,6 +99,15 @@ const UserSchema = new Schema<IUser>(
     phone: {
       type: String,
       default: "",
+      trim: true,
+      validate: {
+        validator: function (value: string) {
+          if (!value) return true; // optional field
+
+          return /^09\d{9}$/.test(value);
+        },
+        message: "شماره موبایل معتبر نیست",
+      },
     },
 
     addresses: {
@@ -108,7 +119,17 @@ const UserSchema = new Schema<IUser>(
       type: Boolean,
       default: true,
     },
+    resetPasswordToken: {
+      type: String,
+      default: null,
+    },
+
+    resetPasswordExpires: {
+      type: Date,
+      default: null,
+    },
   },
+
   {
     timestamps: true,
   },

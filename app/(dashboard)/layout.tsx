@@ -15,8 +15,12 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
 
-  if (!session || session.user.role !== "admin") {
-    redirect("/signin");
-  }
+ if (!session) {
+   redirect("/signin");
+ }
+
+ if (session.user.role !== "admin") {
+   redirect("/access-denied");
+ }
   return <div className="bg-dark-bg min-h-screen">{children}</div>;
 }

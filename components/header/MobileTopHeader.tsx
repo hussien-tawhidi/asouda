@@ -3,32 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import SearchBar from "./search/search-bar/SearchBar";
-import { BiUser } from "react-icons/bi";
-import { PiHeartThin } from "react-icons/pi";
 import SocialIconsContact from "../common/SocialIconsContact";
+import TopBar from "./TopBar";
 
 export default function MobileTopHeader() {
   return (
     <section className='fixed top-0 left-0 z-50 w-full border-b border-earth-brown/20 bg-bone-white/80 shadow-sm backdrop-blur-md'>
       {/* Top Bar */}
-      <div className='flex items-center justify-between bg-espresso-clay px-5 py-2 text-xs text-bone-white'>
-        <span>
-          خوش آمدید |{" "}
-          <Link href='/login' className='underline'>
-            ورود
-          </Link>
-        </span>
-
-        <div className='flex items-center gap-4 text-base'>
-          <Link href='/wishlist' aria-label='علاقه‌مندی‌ها'>
-            <PiHeartThin />
-          </Link>
-
-          <Link href='/account' aria-label='حساب کاربری'>
-            <BiUser />
-          </Link>
-        </div>
-      </div>
+      <TopBar />
 
       {/* Main Header */}
       <div className='flex items-center justify-between px-4 py-2'>

@@ -1,5 +1,7 @@
 "use client";
 
+import Input from "@/components/common/Input";
+import LinkButton from "@/components/common/LinkButton";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -24,6 +26,7 @@ export default function SignInPage() {
       const result = await signIn("credentials", {
         email,
         password,
+
         redirect: false,
       });
 
@@ -55,35 +58,20 @@ export default function SignInPage() {
         </div>
 
         <form onSubmit={handleSubmit} className='space-y-5'>
-          <div>
-            <label className='mb-2 block text-sm font-medium text-gray-700'>
-              ایمیل
-            </label>
-
-            <input
-              type='email'
-              placeholder='example@gmail.com'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className='w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-espresso-clay'
-              required
-            />
-          </div>
-
-          <div>
-            <label className='mb-2 block text-sm font-medium text-gray-700'>
-              رمز عبور
-            </label>
-
-            <input
-              type='password'
-              placeholder='••••••••'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className='w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-espresso-clay'
-              required
-            />
-          </div>
+          <Input
+            label='ایمیل'
+            type='email'
+            placeholder='ایمیل خود را وارد کنید'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            label='رمز عبور'
+            type='password'
+            placeholder='رمز عبور خود را وارد کنید'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
           {error && (
             <div className='rounded-xl bg-red-50 p-3 text-sm text-red-600'>
@@ -98,7 +86,13 @@ export default function SignInPage() {
             {loading ? "در حال ورود..." : "ورود"}
           </button>
         </form>
-
+        <div className='flex justify-end mt-3'>
+          <Link
+            href='/forgot-password'
+            className='text-sm font-medium text-espresso-clay hover:underline'>
+            رمز عبور را فراموش کرده‌اید؟
+          </Link>
+        </div>
         <div className='mt-6 text-center text-sm text-gray-500'>
           حساب ندارید؟
           <Link
