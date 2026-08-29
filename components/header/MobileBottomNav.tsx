@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IconType } from "react-icons";
-import { BiMenu, BiX } from "react-icons/bi";
-import { CgMenuHotdog } from "react-icons/cg";
+import { IconType } from "react-icons";;
 import { PiListHeartLight } from "react-icons/pi";
 
 interface NavItem {
@@ -15,13 +13,11 @@ interface NavItem {
 
 interface MobileBottomNavProps {
   navItems: NavItem[];
-  isMenuOpen: boolean;
   onToggleMenu: () => void;
 }
 
 export default function MobileBottomNav({
   navItems,
-  isMenuOpen,
   onToggleMenu,
 }: MobileBottomNavProps) {
   const pathname = usePathname();
@@ -70,6 +66,7 @@ export default function MobileBottomNav({
             <span className='mt-1 text-[11px] font-medium'>لیست‌ها</span>
           </button>
         </div>
+        
       </nav>
     </section>
   );

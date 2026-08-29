@@ -7,10 +7,10 @@ import { usePathname } from "next/navigation";
 import SearchBar from "./search/search-bar/SearchBar";
 import SocialIconsContact from "../common/SocialIconsContact";
 import TopBar from "./TopBar";
+import AccountDropdown from "./AccountDropdown";
 
 export default function DesktopHeader() {
   const pathname = usePathname();
-
   return (
     <header className='w-full border-b border-espresso-clay/10 shadow-sm'>
       {/* Top Bar */}
@@ -35,8 +35,9 @@ export default function DesktopHeader() {
           <SearchBar />
         </div>
 
-        <div className='shrink-0'>
+        <div className='shrink-0 flex items-center gap-2'>
           <SocialIconsContact aboutInfo />
+          <AccountDropdown />
         </div>
       </div>
 

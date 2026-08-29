@@ -1,7 +1,7 @@
 "use client";
 
 import Input from "@/components/common/Input";
-import LinkButton from "@/components/common/LinkButton";
+import { Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,10 +9,9 @@ import { useState } from "react";
 
 export default function SignInPage() {
   const router = useRouter();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -65,13 +64,26 @@ export default function SignInPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Input
-            label='رمز عبور'
-            type='password'
-            placeholder='رمز عبور خود را وارد کنید'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className='relative'>
+            {" "}
+            <Input
+              label='رمز عبور'
+              type={showPassword ? "text" : "password"}
+              placeholder='رمز عبور خود را وارد کنید'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />{" "}
+            <button
+              type='button'
+              onClick={() => setShowPassword((prev) => !prev)}
+              className='absolute left-3 top-9.5 text-espresso-clay/60 transition hover:text-espresso-clay'
+              aria-label={
+                showPassword ? "مخفی کردن رمز عبور" : "نمایش رمز عبور"
+              }>
+              {" "}
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}{" "}
+            </button>{" "}
+          </div>
 
           {error && (
             <div className='rounded-xl bg-red-50 p-3 text-sm text-red-600'>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import SearchBar from "./search/search-bar/SearchBar";
 import SocialIconsContact from "../common/SocialIconsContact";
 import TopBar from "./TopBar";
+import AccountDropdown from "./AccountDropdown";
 
 export default function MobileTopHeader() {
   return (
@@ -33,8 +34,9 @@ export default function MobileTopHeader() {
         </div>
 
         {/* Actions */}
-        <div className='mr-2 flex shrink-0 items-center'>
+        <div className='mr-2 flex gap-2 shrink-0 items-center'>
           <SocialIconsContact />
+          <AccountDropdown />
         </div>
       </div>
     </section>

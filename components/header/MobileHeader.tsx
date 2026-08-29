@@ -54,7 +54,6 @@ export default function MobileHeader() {
       {/* ===== BOTTOM TAB BAR ===== */}
       <MobileBottomNav
         navItems={navItems}
-        isMenuOpen={isMenuOpen}
         onToggleMenu={() => setIsMenuOpen((prev) => !prev)}
       />
     </header>
