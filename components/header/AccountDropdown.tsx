@@ -63,7 +63,7 @@ export default function AccountDropdown() {
     .map((n) => n[0])
     .join("")
     .toUpperCase()
-    .slice(0, 2);
+    .slice(0, 1);
 
   return (
     <div className='relative' ref={dropdownRef}>

@@ -32,7 +32,7 @@ export interface IUser extends Document {
   updatedAt: Date;
 }
 
-const AddressSchema = new Schema(
+export const AddressSchema = new Schema(
   {
     title: {
       type: String,

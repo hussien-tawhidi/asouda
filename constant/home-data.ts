@@ -10,6 +10,10 @@ import {
   Ruler,
   Shield,
   Heart,
+  User,
+  Package,
+  Bell,
+  Settings,
 } from "lucide-react";
 import { BsInstagram, BsFacebook } from "react-icons/bs";
 import { Clock } from "lucide-react";
@@ -573,4 +577,38 @@ export const banners = [
 export const mobileBanner = [
   { image: "/banners/hero.png", link: "/category/double-bedroom-set" },
   { image: "/banners/hero1.png", link: "/category/modern-bedroom-set" },
+];
+
+// ================ profile menu
+export const profileMenuItems = [
+  {
+    label: "پروفایل من",
+    href: "/profile",
+    icon: User,
+  },
+  {
+    label: "سفارش‌های من",
+    href: "/profile/orders",
+    icon: Package,
+  },
+  {
+    label: "علاقه‌مندی‌ها",
+    href: "/wishlist",
+    icon: Heart,
+  },
+  {
+    label: "آدرس‌های من",
+    href: "/profile/addresses",
+    icon: MapPin,
+  },
+  {
+    label: "اعلان‌ها",
+    href: "/profile/notifications",
+    icon: Bell,
+  },
+  {
+    label: "تنظیمات حساب",
+    href: "/profile/settings",
+    icon: Settings,
+  },
 ];

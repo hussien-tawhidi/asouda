@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 
 import User from "./model/User";
 import { connectDB } from "./lib/db";
+import { userAddressesType } from "./types";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -55,12 +56,26 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // if (user.role !== "admin") {
         //   throw new Error("شما اجازه ورود به پنل مدیریت را ندارید.");
         // }
-
+        const addresses = user.addresses.map((address: userAddressesType) => ({
+          title: address.title,
+          province: address.province,
+          city: address.city,
+          address: address.address,
+          postalCode: address.postalCode,
+          receiver: address.receiver,
+          phone: address.phone,
+          isDefault: address.isDefault,
+        }));
         return {
           id: user._id.toString(),
           name: user.name,
-          email: user.email,
+          phone: user.phone,
           role: user.role,
+          email: user.email,
+          image: user.image,
+          isVerified: user.isVerified,
+          addresses,
+          isActive: user.isActive,
         };
       },
     }),
@@ -71,6 +86,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         token.id = user.id;
         token.role = user.role;
+        token.phone = user.phone;
+        token.isVerified = user.isVerified;
+        token.addresses = user.addresses;
+        token.isActive = user.isActive;
       }
 
       return token;
@@ -80,6 +99,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (session.user) {
         session.user.id = token.id as string;
         session.user.role = token.role as "admin" | "user";
+        session.user.phone = token.phone as string;
+        session.user.isVerified = token.isVerified as boolean;
+        session.user.addresses = token.addresses;
+        session.user.isActive = token.isActive as boolean;
       }
 
       return session;

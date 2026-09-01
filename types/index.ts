@@ -77,3 +77,14 @@ export interface SearchResultsProps {
   query: string;
   onSearch: (term: string) => void;
 }
+
+export interface userAddressesType {
+  title: string;
+  province: string;
+  city: string;
+  address: string;
+  postalCode: string;
+  receiver: string;
+  phone: string;
+  isDefault: boolean;
+}
