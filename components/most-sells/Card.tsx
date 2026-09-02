@@ -86,7 +86,7 @@ export default function Card({
               </p>
             )}
 
-            <h2 className='md:text-2xl flex gap-1 text-sm font-bold'>
+            <h2 className='md:text-xl flex gap-1 text-sm font-bold'>
               {discountedPrice.toLocaleString("fa-IR")}
               <span className='md:text-xs text-[8px] font-light text-bone-white/70'>
                 تومان
