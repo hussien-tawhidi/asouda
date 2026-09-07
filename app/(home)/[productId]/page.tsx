@@ -34,7 +34,6 @@ export default function ProductDetailsPage() {
             category: product?.category,
           },
         });
-        console.log("🚀 ~ fetchProduct ~ fetchData:", data);
         setProduct(fetchData.data.product);
         setRelatedProducts(data.products);
       } catch (error) {

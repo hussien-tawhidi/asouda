@@ -566,11 +566,22 @@ export const mdfColors = [
 export const banners = [
   {
     image: "/banners/1.jpg",
-    link: "/products",
+    link: "/bedding-sets",
   },
   {
     image: "/banners/2.jpg",
-    link: "/offers",
+      link: "/bedding-sets",
+
+  },
+  {
+    image: "/banners/3.png",
+      link: "/bedding-sets",
+
+  },
+  {
+    image: "/banners/4.png",
+      link: "/bedding-sets",
+
   },
 ];
 

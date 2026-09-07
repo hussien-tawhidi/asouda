@@ -16,7 +16,7 @@ export default function MobileHero({
   }[];
 }) {
   return (
-    <div className='block md:hidden'>
+    <div className='block'>
       <Swiper
         effect='fade'
         fadeEffect={{ crossFade: true }}

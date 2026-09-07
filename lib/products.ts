@@ -44,3 +44,4 @@ export const toggleLike = (
       : [...prev, productId],
   );
 };
+

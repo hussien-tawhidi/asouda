@@ -103,8 +103,28 @@ export default function CategoryPage() {
 
   if (error) {
     return (
-      <div className='container mx-auto py-20 text-center text-red-500'>
-        {error}
+      <div className='container mx-auto flex min-h-[60vh] items-center justify-center px-4'>
+        <div className='w-full max-w-md rounded-2xl border border-red-100 p-8 text-center shadow-sm'>
+          <div className='mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-red-100'>
+            <span className='text-2xl'>!</span>
+          </div>
+
+          <h2 className='mb-2 text-xl font-bold text-espresso-clay'>
+            مشکلی پیش آمده
+          </h2>
+
+          <p className='mb-6 text-sm leading-7 text-gray-600'>
+            متأسفانه در دریافت اطلاعات مشکلی پیش آمد.
+            <br />
+            لطفاً دوباره تلاش کنید.
+          </p>
+
+          <button
+            onClick={() => window.location.reload()}
+            className='rounded-xl bg-espresso-clay px-6 py-3 text-sm font-medium text-white transition hover:opacity-90'>
+            تلاش مجدد
+          </button>
+        </div>
       </div>
     );
   }

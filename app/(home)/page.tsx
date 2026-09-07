@@ -52,18 +52,14 @@ export default function Home() {
   return (
     <div className='w-full overflow-hidden pb-20 pt-2'>
       <MobileHero banner={mobileBanner} />
-      <div className='md:block hidden w-[85%] mx-auto mt-10'>
-        <HomeBanner image={"/banners/hero.png"} link={banners[0].link} />
-      </div>
       <FeaturesSection />
 
-      <div className='flex flex-col gap-10 md:w-[90%] w-[95%] my-10 mx-auto'>
-        <div className='md:w-[70%] w-[95%] ml-auto'>
-          <HomeBanner image={banners[0].image} link={banners[0].link} />
-        </div>
-        <div className='md:w-[70%] w-[95%] mr-auto'>
-          <HomeBanner image={banners[1].image} link={banners[1].link} />
-        </div>
+      <div className='grid md:grid-cols-2 gap-5 md:p-10 p-5 mx-auto'>
+        {banners.map((item, index) => (
+          <div key={index}>
+            <HomeBanner image={item.image} link={item.link} />
+          </div>
+        ))}
       </div>
 
       <div className='bg-warm-putty'>
