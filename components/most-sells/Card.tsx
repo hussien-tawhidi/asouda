@@ -93,9 +93,11 @@ export default function Card({
               </span>
             </h2>
           </div>
-          <button className='rounded-xl border text-nowrap border-espresso-clay md:flex hidden px-5 py-2 text-sm font-semibold text-espresso-clay transition hover:bg-espresso-clay hover:text-white'>
+          <Link
+            href={`/order/${product._id}`}
+            className='rounded-xl border text-nowrap border-espresso-clay md:flex hidden px-5 py-2 text-sm font-semibold text-espresso-clay transition hover:bg-espresso-clay hover:text-white'>
             ثبت سفارش
-          </button>
+          </Link>
         </div>
       </div>
     </div>

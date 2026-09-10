@@ -88,3 +88,49 @@ export interface userAddressesType {
   phone: string;
   isDefault: boolean;
 }
+export interface OrderFormData {
+  // productCode: string;
+  productImage: string;
+  productId: string;
+
+  size: string;
+
+  materails: string;
+  color: string;
+
+  fabric: string;
+  fabricColor: string;
+
+  mattress: string;
+  drawers: string;
+
+  extras: string[];
+
+  description: string;
+
+  userAddress: string;
+  phone: string;
+}
+
+export const initialForm: OrderFormData = {
+  // productCode: "",
+  productId: "",
+  productImage: "",
+  size: "",
+
+  materails: "",
+  color: "",
+
+  fabric: "",
+  fabricColor: "",
+
+  mattress: "",
+  drawers: "",
+
+  extras: [],
+
+  description: "",
+
+  userAddress: "",
+  phone: "",
+};

@@ -1,11 +1,12 @@
 "use client";
 
-import { InputHTMLAttributes, useId } from "react";
+import { InputHTMLAttributes, Ref, useId } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string;
   placeHolderText?: string;
+  ref?: Ref<HTMLInputElement>;
 }
 
 export default function Input({
@@ -13,24 +14,26 @@ export default function Input({
   error,
   placeHolderText,
   className = "",
+  ref,
   ...props
 }: InputProps) {
   const id = useId();
 
   return (
     <div className='w-full space-y-2'>
-      <label htmlFor={id} className='block text-sm font-semibold text-gray-700'>
+      <label htmlFor={id} className='block text-sm font-semibold text-espresso-clay/80'>
         {label}
       </label>
 
       <input
+        ref={ref}
         id={id}
         placeholder={placeHolderText}
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-error` : undefined}
         {...props}
         className={`
-          w-full rounded-xl border px-4 py-3 text-sm text-gray-800
+          w-full rounded-xl border bg-espresso-clay/5 px-4 py-3 text-sm text-gray-800
           placeholder:text-gray-400
           shadow-sm
           transition-all duration-200

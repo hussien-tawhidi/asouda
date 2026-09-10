@@ -195,7 +195,6 @@ export default function CreateForm() {
               value: item.name,
             }))}
             error={errors.category}
-            required
           />
 
           <Input
@@ -320,7 +319,6 @@ export default function CreateForm() {
         value={features}
         onChange={setFeatures}
         placeholder='ویژگی'
-       
       />
 
       {/* ----- SECTION: Boolean (Assembly) ----- */}
