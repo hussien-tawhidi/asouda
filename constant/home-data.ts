@@ -10,7 +10,6 @@ import {
   Ruler,
   Shield,
   Heart,
-  User,
   Package,
   Bell,
   Settings,
@@ -592,11 +591,7 @@ export const mobileBanner = [
 
 // ================ profile menu
 export const profileMenuItems = [
-  {
-    label: "پروفایل من",
-    href: "/profile",
-    icon: User,
-  },
+  
   {
     label: "سفارش‌های من",
     href: "/profile/orders",

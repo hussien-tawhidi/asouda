@@ -4,14 +4,11 @@ export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
-
   role: "admin" | "user";
-
   image?: string;
-
+  birthday?: Date | null;
   isVerified: boolean;
   emailToken?: string;
-
   phone?: string;
 
   addresses: {
@@ -24,10 +21,10 @@ export interface IUser extends Document {
     phone: string;
     isDefault: boolean;
   }[];
+
   resetPasswordToken?: string;
   resetPasswordExpires?: Date;
   isActive: boolean;
-
   createdAt: Date;
   updatedAt: Date;
 }
@@ -44,7 +41,6 @@ export const AddressSchema = new Schema(
     postalCode: String,
     receiver: String,
     phone: String,
-    
     isDefault: {
       type: Boolean,
       default: false,
@@ -86,6 +82,10 @@ const UserSchema = new Schema<IUser>(
       default: "",
     },
 
+    birthday: {
+      type: Date,
+    },
+
     isVerified: {
       type: Boolean,
       default: false,
@@ -102,8 +102,7 @@ const UserSchema = new Schema<IUser>(
       trim: true,
       validate: {
         validator: function (value: string) {
-          if (!value) return true; // optional field
-
+          if (!value) return true;
           return /^09\d{9}$/.test(value);
         },
         message: "شماره موبایل معتبر نیست",
@@ -119,6 +118,7 @@ const UserSchema = new Schema<IUser>(
       type: Boolean,
       default: true,
     },
+
     resetPasswordToken: {
       type: String,
       default: null,
@@ -129,7 +129,6 @@ const UserSchema = new Schema<IUser>(
       default: null,
     },
   },
-
   {
     timestamps: true,
   },

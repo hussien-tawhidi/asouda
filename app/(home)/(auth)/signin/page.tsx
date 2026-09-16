@@ -25,12 +25,12 @@ export default function SignInPage() {
       const result = await signIn("credentials", {
         email,
         password,
-
         redirect: false,
       });
+      console.log("🚀 ~ handleSubmit ~ result:", result);
 
       if (result?.error) {
-        setError(result.error);
+        setError("ایمیل یا رمز عبور اشتباه است ...");
         return;
       }
 
@@ -86,7 +86,7 @@ export default function SignInPage() {
           </div>
 
           {error && (
-            <div className='rounded-xl bg-red-50 p-3 text-sm text-red-600'>
+            <div className='rounded-xl bg-red-50 text-xs p-3 text-red-600'>
               {error}
             </div>
           )}

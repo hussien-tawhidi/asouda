@@ -2,8 +2,9 @@
 
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { LogOut, Settings, User, LayoutDashboard } from "lucide-react";
+import { LogOut, User, LayoutDashboard, ChevronLeft } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { profileMenuItems } from "@/constant/home-data";
 
 export default function AccountDropdown() {
   const { data: session, status } = useSession();
@@ -101,47 +102,46 @@ export default function AccountDropdown() {
         <div className='absolute -top-2 right-3 h-3 w-3 rotate-45 border-l border-t border-espresso-clay/10 bg-bone-white' />
 
         {/* User info */}
-        <div className='border-b border-espresso-clay/10 px-4 py-4'>
-          <div className='flex items-center justify-between'>
-            <p className='text-sm font-semibold text-espresso-clay'>
-              {userName}
-            </p>
-            {isAdmin && (
-              <span className='rounded-full bg-earth-brown/10 px-2 py-0.5 text-xs font-medium text-earth-brown'>
-                ادمین
-              </span>
+        <Link
+          href={"/profile"}
+          className='flex items-center justify-between w-full border-b border-espresso-clay/30 px-4 py-2
+                       text-sm text-espresso-clay transition-colors
+                       hover:bg-espresso-clay/10'>
+          <div>
+            <div className='flex items-center justify-between'>
+              <p className='text-sm font-semibold text-espresso-clay'>
+                {userName}
+              </p>
+              {isAdmin && (
+                <span className='rounded-full bg-earth-brown/10 px-2 py-0.5 text-xs font-medium text-earth-brown'>
+                  ادمین
+                </span>
+              )}
+            </div>
+            {userEmail && (
+              <p className='mt-1 truncate text-xs text-espresso-clay/60'>
+                {userEmail}
+              </p>
             )}
           </div>
-          {userEmail && (
-            <p className='mt-1 truncate text-xs text-espresso-clay/60'>
-              {userEmail}
-            </p>
-          )}
-        </div>
+          <ChevronLeft size={17}/>
+        </Link>
 
         {/* Menu items */}
         <div className='p-2'>
-          <Link
-            href='/profile'
-            onClick={() => setOpen(false)}
-            className='flex items-center gap-3 rounded-xl px-3 py-2.5
-                       text-sm text-espresso-clay transition-colors
+          {profileMenuItems.map((item, index) => (
+            <Link
+              key={index}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className='flex items-center gap-3 rounded-xl px-3 py-2.5
+                       text-sm text-espresso-clay/80 transition-colors
                        hover:bg-espresso-clay/10'
-            role='menuitem'>
-            <User size={17} />
-            <span>پروفایل من</span>
-          </Link>
-
-          <Link
-            href='/profile/settings'
-            onClick={() => setOpen(false)}
-            className='flex items-center gap-3 rounded-xl px-3 py-2.5
-                       text-sm text-espresso-clay transition-colors
-                       hover:bg-espresso-clay/10'
-            role='menuitem'>
-            <Settings size={17} />
-            <span>تنظیمات حساب</span>
-          </Link>
+              role='menuitem'>
+              <item.icon size={17} />
+              <span>{item.label}</span>
+            </Link>
+          ))}
 
           {isAdmin && (
             <Link

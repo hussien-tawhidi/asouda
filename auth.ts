@@ -1,3 +1,4 @@
+
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
@@ -25,17 +26,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       async authorize(credentials) {
         console.log("AUTH START");
 
-        await connectDB();
-        console.log("DB CONNECTED");
-
         if (!credentials?.email || !credentials?.password) {
           throw new Error("ایمیل و رمز عبور الزامی است.");
         }
 
+        const email = String(credentials.email).trim().toLowerCase();
+        const password = String(credentials.password);
+
+        await connectDB();
+
+        console.log("DB CONNECTED");
+
         const user = await User.findOne({
-          email: credentials.email,
+          email,
         }).select("+password");
-        console.log("USER:", user);
+
+        console.log("USER FOUND:", !!user);
+
         if (!user) {
           throw new Error("ایمیل یا رمز عبور اشتباه است.");
         }
@@ -45,27 +52,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         const isPasswordValid = await bcrypt.compare(
-          credentials.password as string,
-          user.password,
+          password,
+          user.password
         );
 
         if (!isPasswordValid) {
           throw new Error("ایمیل یا رمز عبور اشتباه است.");
         }
 
+        // اگر این صفحه فقط برای ادمین است:
         // if (user.role !== "admin") {
         //   throw new Error("شما اجازه ورود به پنل مدیریت را ندارید.");
         // }
-        const addresses = user.addresses.map((address: userAddressesType) => ({
-          title: address.title,
-          province: address.province,
-          city: address.city,
-          address: address.address,
-          postalCode: address.postalCode,
-          receiver: address.receiver,
-          phone: address.phone,
-          isDefault: address.isDefault,
-        }));
+
+        const addresses = user.addresses.map(
+          (address: userAddressesType) => ({
+            title: address.title,
+            province: address.province,
+            city: address.city,
+            address: address.address,
+            postalCode: address.postalCode,
+            receiver: address.receiver,
+            phone: address.phone,
+            isDefault: address.isDefault,
+          })
+        );
+
         return {
           id: user._id.toString(),
           name: user.name,
@@ -118,4 +130,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
 
   secret: process.env.AUTH_SECRET,
-});
+})
